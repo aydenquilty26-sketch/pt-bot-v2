@@ -24,10 +24,6 @@ async function loadDashboard() {
 
         const data = await response.json();
 
-        // -----------------------
-        // STATUS
-        // -----------------------
-
         document.getElementById("mode-text").textContent =
             (data.mode || "paper").toUpperCase();
 
@@ -39,10 +35,6 @@ async function loadDashboard() {
         document.getElementById("market-text").textContent =
             (hour >= 9 && hour < 16) ? "Open" : "Closed";
 
-        // -----------------------
-        // HALT BANNER
-        // -----------------------
-
         const haltBanner = document.getElementById("halt-banner");
 
         if (data.halted) {
@@ -51,9 +43,7 @@ async function loadDashboard() {
 
             let reason = "Unknown";
 
-            if (data.recent_halts &&
-                data.recent_halts.length > 0) {
-
+            if (data.recent_halts?.length) {
                 reason = data.recent_halts[0].reason;
             }
 
@@ -65,10 +55,6 @@ async function loadDashboard() {
             haltBanner.classList.add("hidden");
 
         }
-
-        // -----------------------
-        // TOP STATS
-        // -----------------------
 
         document.getElementById("portfolio-value").textContent =
             money(data.portfolio_value);
@@ -88,10 +74,6 @@ async function loadDashboard() {
         document.getElementById("positions").textContent =
             data.open_positions ?? 0;
 
-        // -----------------------
-        // AI DECISION
-        // -----------------------
-
         const decision = data.current_decision || {};
 
         document.getElementById("decision-ticker").textContent =
@@ -106,10 +88,6 @@ async function loadDashboard() {
         document.getElementById("decision-score").textContent =
             Number(decision.composite_score || 0).toFixed(3);
 
-        // -----------------------
-        // AI REASONING
-        // -----------------------
-
         document.getElementById("technical-reason").textContent =
             "Technical Score: " +
             percent((decision.technical_score || 0) * 100);
@@ -122,14 +100,32 @@ async function loadDashboard() {
             (decision.risk_decision || "Unknown").toUpperCase() +
             " - " +
             (decision.risk_reason || "");
-        // -----------------------
-        // RECENT DECISIONS TABLE
-        // -----------------------
+
+        // Performance
+
+        const stats = data.trade_stats || {};
+
+        document.getElementById("win-rate").textContent =
+            percent(stats.win_rate || 0);
+
+        document.getElementById("profit-factor").textContent =
+            stats.total_trades ?? 0;
+
+        document.getElementById("sharpe").textContent =
+            stats.wins ?? 0;
+
+        document.getElementById("drawdown").textContent =
+            stats.losses ?? 0;
+
+        document.getElementById("expectancy").textContent =
+            money(stats.average_trade || 0);
+
+        // Recent decisions
 
         const tbody = document.getElementById("decision-table");
         tbody.innerHTML = "";
 
-        if (data.recent_cycles && data.recent_cycles.length > 0) {
+        if (data.recent_cycles?.length) {
 
             data.recent_cycles.forEach(cycle => {
 
@@ -155,13 +151,11 @@ async function loadDashboard() {
 
         }
 
-        // -----------------------
-        // EQUITY CHART
-        // -----------------------
+        // Equity chart
 
         const history = data.equity_history || [];
 
-        if (history.length > 0) {
+        if (history.length) {
 
             const labels = history.map(p =>
                 new Date(p.timestamp).toLocaleDateString()
@@ -180,7 +174,7 @@ async function loadDashboard() {
                 {
                     type: "line",
                     data: {
-                        labels: labels,
+                        labels,
                         datasets: [{
                             label: "Portfolio Value",
                             data: values,
@@ -199,24 +193,6 @@ async function loadDashboard() {
                             legend: {
                                 display: false
                             }
-                        },
-                        scales: {
-                            x: {
-                                ticks: {
-                                    color: "#8D98A5"
-                                },
-                                grid: {
-                                    color: "rgba(255,255,255,.05)"
-                                }
-                            },
-                            y: {
-                                ticks: {
-                                    color: "#8D98A5"
-                                },
-                                grid: {
-                                    color: "rgba(255,255,255,.05)"
-                                }
-                            }
                         }
                     }
                 }
@@ -224,9 +200,7 @@ async function loadDashboard() {
 
         }
 
-    }
-
-    catch (error) {
+    } catch (error) {
 
         console.error(error);
 
