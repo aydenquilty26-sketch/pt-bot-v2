@@ -46,16 +46,37 @@ def export():
             total_pnl_pct = (total_pnl / starting_equity) * 100
 
         data = {
-            "mode": config.MODE,
-            "equity_history": equity_history,
-            "recent_cycles": recent_cycles,
-            "halted": os.path.exists(config.HALT_FILE),
-            "recent_halts": recent_halts,
-            "starting_equity": starting_equity,
-            "current_equity": current_equity,
-            "total_pnl": total_pnl,
-            "total_pnl_pct": total_pnl_pct,
-        }
+    "mode": config.MODE,
+
+    "equity_history": equity_history,
+    "recent_cycles": recent_cycles,
+
+    "halted": os.path.exists(config.HALT_FILE),
+    "recent_halts": recent_halts,
+
+    "starting_equity": starting_equity,
+    "current_equity": current_equity,
+    "total_pnl": total_pnl,
+    "total_pnl_pct": total_pnl_pct,
+
+    # ---------- Dashboard V2 ----------
+
+    "portfolio_value": current_equity,
+
+    "cash": equity_history[-1]["cash"] if equity_history else 0,
+
+    "positions_value": equity_history[-1]["positions_value"] if equity_history else 0,
+
+    "buying_power": equity_history[-1]["cash"] if equity_history else 0,
+
+    "daily_pl": 0,
+
+    "open_positions": 0,
+
+    "current_decision": recent_cycles[0] if recent_cycles else None,
+
+    "last_updated": equity_history[-1]["timestamp"] if equity_history else None
+}
 
     os.makedirs("docs", exist_ok=True)
     with open("docs/data.json", "w") as f:
