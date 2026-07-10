@@ -4,6 +4,7 @@ the dashboard (docs/index.html) fetches. Run this after main.py each
 cycle. Keeping the dashboard "static" (just HTML+JS reading a JSON file)
 means it can be hosted for free on GitHub Pages with zero server needed.
 """
+
 import json
 import os
 import sqlite3
@@ -11,87 +12,140 @@ import config
 
 
 def export():
+
     if not os.path.exists(config.DB_PATH):
-        data = {"mode": config.MODE, "equity_history": [], "recent_cycles": [], "halted": False}
+        data = {
+            "mode": config.MODE,
+            "equity_history": [],
+            "recent_cycles": [],
+            "halted": False
+        }
+
     else:
+
         conn = sqlite3.connect(config.DB_PATH)
         conn.row_factory = sqlite3.Row
 
         equity_rows = conn.execute(
-            "SELECT timestamp, equity, cash, positions_value FROM equity_snapshots "
-            "ORDER BY id DESC LIMIT 500"
+            """
+            SELECT timestamp, equity, cash, positions_value
+            FROM equity_snapshots
+            ORDER BY id DESC
+            LIMIT 500
+            """
         ).fetchall()
+
         equity_history = [dict(r) for r in reversed(equity_rows)]
 
         cycle_rows = conn.execute(
-            "SELECT timestamp, ticker, technical_score, fundamental_score, composite_score, "
-            "action, risk_decision, risk_reason, order_id, notes FROM cycles "
-            "ORDER BY id DESC LIMIT 200"
+            """
+            SELECT
+                timestamp,
+                ticker,
+                technical_score,
+                fundamental_score,
+                composite_score,
+                action,
+                risk_decision,
+                risk_reason,
+                order_id,
+                notes
+            FROM cycles
+            ORDER BY id DESC
+            LIMIT 200
+            """
         ).fetchall()
+
         recent_cycles = [dict(r) for r in cycle_rows]
 
         halt_rows = conn.execute(
-            "SELECT timestamp, reason FROM halts ORDER BY id DESC LIMIT 5"
+            """
+            SELECT timestamp, reason
+            FROM halts
+            ORDER BY id DESC
+            LIMIT 5
+            """
         ).fetchall()
+
         recent_halts = [dict(r) for r in halt_rows]
 
         conn.close()
 
         starting_equity = 100000.0
-        current_equity = equity_history[-1]["equity"] if equity_history else None
+
+        current_equity = (
+            equity_history[-1]["equity"]
+            if equity_history else None
+        )
+
         total_pnl = None
         total_pnl_pct = None
-        if starting_equity is not None and current_equity is not None and starting_equity > 0:
+
+        if current_equity is not None:
             total_pnl = current_equity - starting_equity
             total_pnl_pct = (total_pnl / starting_equity) * 100
 
+        # Find the most recent REAL trade decision.
+        current_decision = None
+
+        for cycle in recent_cycles:
+            if (
+                cycle["action"] != "none"
+                and cycle["composite_score"] is not None
+            ):
+                current_decision = cycle
+                break
+
         data = {
-    "mode": config.MODE,
 
-    "equity_history": equity_history,
-    "recent_cycles": recent_cycles,
+            "mode": config.MODE,
 
-    "halted": os.path.exists(config.HALT_FILE),
-    "recent_halts": recent_halts,
+            "equity_history": equity_history,
+            "recent_cycles": recent_cycles,
 
-    "starting_equity": starting_equity,
-    "current_equity": current_equity,
-    "total_pnl": total_pnl,
-    "total_pnl_pct": total_pnl_pct,
+            "halted": os.path.exists(config.HALT_FILE),
+            "recent_halts": recent_halts,
 
-    # ---------- Dashboard V2 ----------
+            "starting_equity": starting_equity,
+            "current_equity": current_equity,
+            "total_pnl": total_pnl,
+            "total_pnl_pct": total_pnl_pct,
 
-    "portfolio_value": current_equity,
+            "portfolio_value": current_equity,
 
-    "cash": equity_history[-1]["cash"] if equity_history else 0,
+            "cash": equity_history[-1]["cash"] if equity_history else 0,
 
-    "positions_value": equity_history[-1]["positions_value"] if equity_history else 0,
+            "positions_value": (
+                equity_history[-1]["positions_value"]
+                if equity_history else 0
+            ),
 
-    "buying_power": equity_history[-1]["cash"] if equity_history else 0,
+            "buying_power": (
+                equity_history[-1]["cash"]
+                if equity_history else 0
+            ),
 
-    "daily_pl": 0,
+            "daily_pl": 0,
 
-    "open_positions": 0,
+            "open_positions": 0,
 
-    current_decision = None
+            "current_decision": current_decision,
 
-for cycle in recent_cycles:
-    if (
-        cycle["action"] != "none"
-        and cycle["composite_score"] is not None
-    ):
-        current_decision = cycle
-        break
-
-    "last_updated": equity_history[-1]["timestamp"] if equity_history else None
-}
+            "last_updated": (
+                equity_history[-1]["timestamp"]
+                if equity_history else None
+            ),
+        }
 
     os.makedirs("docs", exist_ok=True)
+
     with open("docs/data.json", "w") as f:
         json.dump(data, f, indent=2, default=str)
 
-    print(f"Exported {len(data['equity_history'])} equity points and "
-          f"{len(data['recent_cycles'])} cycle records to docs/data.json")
+    print(
+        f"Exported {len(data['equity_history'])} equity points and "
+        f"{len(data['recent_cycles'])} cycle records to docs/data.json"
+    )
 
 
 if __name__ == "__main__":
