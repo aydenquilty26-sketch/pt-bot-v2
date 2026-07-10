@@ -753,3 +753,18 @@ font-size:14px;
 }
 
 }
+
+.trade-profit{
+    color: var(--green);
+    font-weight:700;
+}
+
+.trade-loss{
+    color: var(--red);
+    font-weight:700;
+}
+
+.trade-neutral{
+    color: var(--muted);
+    font-weight:700;
+}
