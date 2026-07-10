@@ -1,16 +1,13 @@
 """
 Trade reconciler.
 
-Looks for positions that have been closed by Alpaca (manual sell,
-take-profit, stop-loss, etc.) and writes completed trades into the
-database.
+Looks for positions that have been closed by Alpaca and records the
+completed trade in the database.
 """
 
-from datetime import datetime, timezone
-
-import db
 from execution import get_trading_client
-from trade_tracker import load, save
+from trade_tracker import load_trades, save_trades
+import db
 
 
 def reconcile():
@@ -22,63 +19,54 @@ def reconcile():
         for p in client.get_all_positions()
     }
 
-    tracked = load()
+    tracked = load_trades()
 
     changed = False
 
     for ticker in list(tracked.keys()):
 
-        # Still open.
         if ticker in open_positions:
             continue
 
         try:
+
             orders = client.get_orders()
 
-            buy = None
-            sell = None
+            buys = [
+                o for o in orders
+                if o.symbol == ticker
+                and str(o.side).lower() == "buy"
+                and o.filled_avg_price
+            ]
 
-            for order in orders:
+            sells = [
+                o for o in orders
+                if o.symbol == ticker
+                and str(o.side).lower() == "sell"
+                and o.filled_avg_price
+            ]
 
-                if order.symbol != ticker:
-                    continue
-
-                side = str(order.side).lower()
-
-                if "buy" in side:
-                    buy = order
-
-                if "sell" in side:
-                    sell = order
-
-            if not buy or not sell:
+            if not buys or not sells:
                 continue
+
+            buy = max(buys, key=lambda o: o.filled_at)
+            sell = max(sells, key=lambda o: o.filled_at)
 
             buy_price = float(buy.filled_avg_price)
             sell_price = float(sell.filled_avg_price)
             qty = float(sell.filled_qty)
 
-            buy_time = datetime.fromisoformat(
-                tracked[ticker]["buy_time"]
-            )
-
-            sell_time = datetime.now(timezone.utc)
-
             pnl = (sell_price - buy_price) * qty
-
-            pnl_pct = (
-                (sell_price - buy_price)
-                / buy_price
-            ) * 100
+            pnl_pct = ((sell_price - buy_price) / buy_price) * 100
 
             hold_hours = (
-                sell_time - buy_time
+                sell.filled_at - buy.filled_at
             ).total_seconds() / 3600
 
             db.log_completed_trade(
                 ticker=ticker,
-                buy_time=buy_time.isoformat(),
-                sell_time=sell_time.isoformat(),
+                buy_time=buy.filled_at.isoformat(),
+                sell_time=sell.filled_at.isoformat(),
                 buy_price=buy_price,
                 sell_price=sell_price,
                 quantity=qty,
@@ -88,7 +76,6 @@ def reconcile():
             )
 
             del tracked[ticker]
-
             changed = True
 
             print(f"Recorded completed trade for {ticker}")
@@ -97,4 +84,4 @@ def reconcile():
             print(f"Trade reconciliation failed for {ticker}: {e}")
 
     if changed:
-        save(tracked)
+        save_trades(tracked)
