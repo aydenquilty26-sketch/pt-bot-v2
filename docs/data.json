@@ -1,0 +1,50 @@
+{
+  "mode": "paper",
+  "equity_history": [
+    {
+      "timestamp": "2026-07-10T15:11:07.032882+00:00",
+      "equity": 10.0,
+      "cash": 10.0,
+      "positions_value": 0.0
+    }
+  ],
+  "recent_cycles": [
+    {
+      "timestamp": "2026-07-10T15:11:08.242879+00:00",
+      "ticker": "AAPL",
+      "technical_score": 0.4,
+      "fundamental_score": 0.8,
+      "composite_score": 0.575,
+      "action": "buy",
+      "risk_decision": "rejected",
+      "risk_reason": "position size too small",
+      "order_id": null,
+      "notes": ""
+    }
+  ],
+  "halted": false,
+  "recent_halts": [],
+  "starting_equity": 10.0,
+  "current_equity": 10.0,
+  "total_pnl": 0.0,
+  "total_pnl_pct": 0.0,
+  "portfolio_value": 10.0,
+  "cash": 10.0,
+  "positions_value": 0.0,
+  "buying_power": 10.0,
+  "daily_pl": 0,
+  "open_positions": 0,
+  "current_decision": {
+    "timestamp": "2026-07-10T15:11:08.242879+00:00",
+    "ticker": "AAPL",
+    "technical_score": 0.4,
+    "fundamental_score": 0.8,
+    "composite_score": 0.575,
+    "action": "buy",
+    "risk_decision": "rejected",
+    "risk_reason": "position size too small",
+    "order_id": null,
+    "notes": ""
+  },
+  "last_updated": "2026-07-10T15:11:07.032882+00:00"
+}
