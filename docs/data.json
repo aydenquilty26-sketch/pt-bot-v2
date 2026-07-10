@@ -48,9 +48,27 @@
       "equity": 99995.65,
       "cash": 95296.75,
       "positions_value": 4698.9
+    },
+    {
+      "timestamp": "2026-07-10T16:18:38.609302+00:00",
+      "equity": 100010.35,
+      "cash": 95296.75,
+      "positions_value": 4713.6
     }
   ],
   "recent_cycles": [
+    {
+      "timestamp": "2026-07-10T16:18:39.195983+00:00",
+      "ticker": "AAPL",
+      "technical_score": 0.4,
+      "fundamental_score": 0.8,
+      "composite_score": null,
+      "action": "none",
+      "risk_decision": "n/a",
+      "risk_reason": "no trade proposed",
+      "order_id": null,
+      "notes": ""
+    },
     {
       "timestamp": "2026-07-10T16:06:22.216572+00:00",
       "ticker": "AAPL",
@@ -151,12 +169,12 @@
   "halted": false,
   "recent_halts": [],
   "starting_equity": 100000.0,
-  "current_equity": 99995.65,
-  "total_pnl": -4.350000000005821,
-  "total_pnl_pct": -0.0043500000000058206,
-  "portfolio_value": 99995.65,
+  "current_equity": 100010.35,
+  "total_pnl": 10.35000000000582,
+  "total_pnl_pct": 0.01035000000000582,
+  "portfolio_value": 100010.35,
   "cash": 95296.75,
-  "positions_value": 4698.9,
+  "positions_value": 4713.6,
   "buying_power": 95296.75,
   "daily_pl": 0,
   "open_positions": 0,
@@ -172,5 +190,5 @@
     "order_id": "444514b0-0798-4abc-99fa-bfe0a5784afd",
     "notes": "submitted"
   },
-  "last_updated": "2026-07-10T16:06:21.415123+00:00"
+  "last_updated": "2026-07-10T16:18:38.609302+00:00"
 }
