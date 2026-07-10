@@ -73,7 +73,15 @@ def export():
 
     "open_positions": 0,
 
-    "current_decision": recent_cycles[0] if recent_cycles else None,
+    current_decision = None
+
+for cycle in recent_cycles:
+    if (
+        cycle["action"] != "none"
+        and cycle["composite_score"] is not None
+    ):
+        current_decision = cycle
+        break
 
     "last_updated": equity_history[-1]["timestamp"] if equity_history else None
 }
