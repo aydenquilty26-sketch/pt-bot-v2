@@ -7,17 +7,31 @@ import os
 import sqlite3
 
 import config
+from execution import get_trading_client
 
 
 def export():
 
+    broker = None
+
+    try:
+        client = get_trading_client()
+        broker = client.get_account()
+        open_positions = len(client.get_all_positions())
+    except Exception:
+        broker = None
+        open_positions = 0
+
     if not os.path.exists(config.DB_PATH):
+
         data = {
             "mode": config.MODE,
             "equity_history": [],
             "recent_cycles": [],
             "recent_trades": [],
             "halted": False,
+            "open_positions": open_positions,
+            "daily_pl": 0,
         }
 
     else:
@@ -82,8 +96,45 @@ def export():
         starting_equity = 100000.0
 
         current_equity = (
-            equity_history[-1]["equity"]
-            if equity_history else None
+            float(broker.equity)
+            if broker
+            else (
+                equity_history[-1]["equity"]
+                if equity_history
+                else None
+            )
+        )
+
+        cash = (
+            float(broker.cash)
+            if broker
+            else (
+                equity_history[-1]["cash"]
+                if equity_history
+                else 0
+            )
+        )
+
+        buying_power = (
+            float(broker.buying_power)
+            if broker
+            else cash
+        )
+
+        positions_value = (
+            current_equity - cash
+            if current_equity is not None
+            else (
+                equity_history[-1]["positions_value"]
+                if equity_history
+                else 0
+            )
+        )
+
+        daily_pl = (
+            float(broker.equity) - float(broker.last_equity)
+            if broker
+            else 0
         )
 
         total_pnl = None
@@ -139,12 +190,12 @@ def export():
             "total_pnl": total_pnl,
             "total_pnl_pct": total_pnl_pct,
 
-            "cash": equity_history[-1]["cash"] if equity_history else 0,
-            "positions_value": equity_history[-1]["positions_value"] if equity_history else 0,
-            "buying_power": equity_history[-1]["cash"] if equity_history else 0,
+            "cash": cash,
+            "positions_value": positions_value,
+            "buying_power": buying_power,
 
-            "daily_pl": 0,
-            "open_positions": 0,
+            "daily_pl": daily_pl,
+            "open_positions": open_positions,
 
             "current_decision": current_decision,
 
