@@ -91,4 +91,5 @@ def get_technical_signal(ticker: str) -> dict:
         "score": round(score, 3),
         "confidence": 0.9,
         "rationale": ", ".join(reasons) if reasons else "neutral",
+        "last_price": float(close.iloc[-1]),
     }
