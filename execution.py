@@ -15,7 +15,7 @@ from alpaca.trading.enums import (
 )
 
 import config
-from trade_tracker import record_buy, record_sell
+from trade_tracker import record_buy
 
 if not config.API_KEY or not config.API_SECRET:
     raise ValueError(
@@ -97,21 +97,17 @@ def submit_sell(ticker: str, qty: float) -> dict:
 
     try:
 
-        position = _client.get_open_position(ticker)
-        exit_price = float(position.current_price)
-
         order = _client.submit_order(order_req)
 
-        trade = record_sell(
-            ticker=ticker,
-            exit_price=exit_price,
-        )
+        # Trade tracking stays untouched here on purpose. We don't yet know
+        # the real fill price - this is a market order, not a guarantee.
+        # The reconciler picks up the closed position next cycle and logs
+        # it using the broker's actual filled_avg_price.
 
         return {
             "success": True,
             "reason": "submitted",
             "order_id": str(order.id),
-            "trade": trade,
         }
 
     except Exception as e:

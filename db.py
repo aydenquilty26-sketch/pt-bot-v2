@@ -35,13 +35,6 @@ CREATE TABLE IF NOT EXISTS halts (
     reason TEXT
 );
 
-CREATE TABLE IF NOT EXISTS open_positions (
-    ticker TEXT PRIMARY KEY,
-    qty REAL NOT NULL,
-    entry_price REAL NOT NULL,
-    opened_at TEXT NOT NULL
-);
-
 CREATE TABLE IF NOT EXISTS completed_trades (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     ticker TEXT NOT NULL,
@@ -150,63 +143,6 @@ def log_halt(reason):
             datetime.now(timezone.utc).isoformat(),
             reason,
         ),
-    )
-
-    conn.commit()
-    conn.close()
-
-
-def save_open_position(ticker, qty, entry_price):
-    conn = get_conn()
-
-    conn.execute(
-        """
-        INSERT OR REPLACE INTO open_positions (
-            ticker,
-            qty,
-            entry_price,
-            opened_at
-        )
-        VALUES (?, ?, ?, ?)
-        """,
-        (
-            ticker,
-            qty,
-            entry_price,
-            datetime.now(timezone.utc).isoformat(),
-        ),
-    )
-
-    conn.commit()
-    conn.close()
-
-
-def get_open_position(ticker):
-    conn = get_conn()
-
-    row = conn.execute(
-        """
-        SELECT *
-        FROM open_positions
-        WHERE ticker = ?
-        """,
-        (ticker,),
-    ).fetchone()
-
-    conn.close()
-
-    return row
-
-
-def remove_open_position(ticker):
-    conn = get_conn()
-
-    conn.execute(
-        """
-        DELETE FROM open_positions
-        WHERE ticker = ?
-        """,
-        (ticker,),
     )
 
     conn.commit()
