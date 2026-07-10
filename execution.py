@@ -1,7 +1,5 @@
 """
-Execution agent. The only agent that submits orders. Uses a bracket order
-so stop-loss and take-profit are attached at entry - the position manages
-its own exit even if the bot doesn't run again before it's hit.
+Execution agent. The only agent that submits orders.
 """
 
 from alpaca.trading.client import TradingClient
@@ -99,15 +97,21 @@ def submit_sell(ticker: str, qty: float) -> dict:
 
     try:
 
+        position = _client.get_open_position(ticker)
+        exit_price = float(position.current_price)
+
         order = _client.submit_order(order_req)
 
-        entry = record_sell(ticker)
+        trade = record_sell(
+            ticker=ticker,
+            exit_price=exit_price,
+        )
 
         return {
             "success": True,
             "reason": "submitted",
             "order_id": str(order.id),
-            "entry": entry,
+            "trade": trade,
         }
 
     except Exception as e:
