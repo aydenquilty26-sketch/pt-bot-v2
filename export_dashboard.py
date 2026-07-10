@@ -37,7 +37,7 @@ def export():
 
         conn.close()
 
-        starting_equity = equity_history[0]["equity"] if equity_history else None
+        starting_equity = 100000.0
         current_equity = equity_history[-1]["equity"] if equity_history else None
         total_pnl = None
         total_pnl_pct = None
