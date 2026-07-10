@@ -616,7 +616,9 @@ backdrop-filter:blur(12px);
 
 .big-number{
 
-word-break:break-word;
+font-size:clamp(20px,2.3vw,32px);
+white-space:nowrap;
+line-height:1.2;
 
 }
 
@@ -767,4 +769,106 @@ font-size:14px;
 .trade-neutral{
     color: var(--muted);
     font-weight:700;
+}
+
+/* -------------------- */
+/* Plain-English summary */
+/* -------------------- */
+
+.summary-panel{
+
+margin-bottom:35px;
+
+}
+
+.summary-list{
+
+list-style:none;
+display:flex;
+flex-direction:column;
+gap:10px;
+
+}
+
+.summary-list li{
+
+position:relative;
+padding-left:20px;
+color:var(--text);
+line-height:1.5;
+font-size:15px;
+
+}
+
+.summary-list li::before{
+
+content:"";
+position:absolute;
+left:0;
+top:9px;
+width:6px;
+height:6px;
+border-radius:50%;
+background:var(--blue);
+
+}
+
+/* -------------------- */
+/* Profit / loss coloring - referenced by JS but never had rules before */
+/* -------------------- */
+
+.profit{
+
+color:var(--green);
+font-weight:700;
+
+}
+
+.loss{
+
+color:var(--red);
+font-weight:700;
+
+}
+
+/* -------------------- */
+/* Recent Decisions header row + filter toggle */
+/* -------------------- */
+
+.panel-header-row{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:12px;
+margin-bottom:24px;
+
+}
+
+.panel-header-row h2{
+
+margin-bottom:0;
+
+}
+
+.toggle-label{
+
+display:flex;
+align-items:center;
+gap:8px;
+font-size:13px;
+color:var(--muted);
+cursor:pointer;
+user-select:none;
+
+}
+
+.toggle-label input{
+
+width:16px;
+height:16px;
+accent-color:var(--blue);
+cursor:pointer;
+
 }
