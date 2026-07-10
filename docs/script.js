@@ -1,15 +1,28 @@
 let equityChart = null;
+let latestCycles = [];
+let showOnlyTrades = false;
 
+// value === null/undefined means "not enough data yet" - shown as a dash,
+// never silently coerced to 0. A real $0.00 and "no data" are different
+// things and should never look the same on screen.
 const money = (value) => {
-    const num = Number(value || 0);
-    return "$" + num.toLocaleString(undefined, {
+    if (value === null || value === undefined) return "—";
+    const num = Number(value);
+    const sign = num < 0 ? "-" : "";
+    return sign + "$" + Math.abs(num).toLocaleString(undefined, {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
     });
 };
 
 const percent = (value) => {
-    return Number(value || 0).toFixed(2) + "%";
+    if (value === null || value === undefined) return "—";
+    return Number(value).toFixed(2) + "%";
+};
+
+const number = (value, decimals = 2) => {
+    if (value === null || value === undefined) return "—";
+    return Number(value).toFixed(decimals);
 };
 
 async function loadDashboard() {
@@ -56,11 +69,36 @@ async function loadDashboard() {
 
         }
 
+        // --------------------
+        // Plain English Summary
+        // --------------------
+
+        const summaryList = document.getElementById("plain-summary");
+        summaryList.innerHTML = "";
+
+        if (data.plain_summary?.length) {
+            data.plain_summary.forEach(line => {
+                const li = document.createElement("li");
+                li.textContent = line;
+                summaryList.appendChild(li);
+            });
+        } else {
+            summaryList.innerHTML = "<li>Nothing to report yet.</li>";
+        }
+
+        // --------------------
+        // Top cards
+        // --------------------
+
         document.getElementById("portfolio-value").textContent =
             money(data.portfolio_value);
 
-        document.getElementById("daily-pl").textContent =
-            money(data.daily_pl);
+        const dailyPlEl = document.getElementById("daily-pl");
+        dailyPlEl.textContent = money(data.daily_pl);
+        dailyPlEl.classList.remove("profit", "loss");
+        if (data.daily_pl !== null && data.daily_pl !== undefined) {
+            dailyPlEl.classList.add(data.daily_pl >= 0 ? "profit" : "loss");
+        }
 
         document.getElementById("cash").textContent =
             money(data.cash);
@@ -68,8 +106,12 @@ async function loadDashboard() {
         document.getElementById("buying-power").textContent =
             money(data.buying_power);
 
-        document.getElementById("return").textContent =
-            percent(data.total_pnl_pct);
+        const returnEl = document.getElementById("return");
+        returnEl.textContent = percent(data.total_pnl_pct);
+        returnEl.classList.remove("profit", "loss");
+        if (data.total_pnl_pct !== null && data.total_pnl_pct !== undefined) {
+            returnEl.classList.add(data.total_pnl_pct >= 0 ? "profit" : "loss");
+        }
 
         document.getElementById("positions").textContent =
             data.open_positions ?? 0;
@@ -87,23 +129,67 @@ async function loadDashboard() {
             (decision.action || "WAIT").toUpperCase();
 
         document.getElementById("decision-confidence").textContent =
-            percent((decision.composite_score || 0) * 100);
+            decision.composite_score !== undefined
+                ? percent(Math.abs(decision.composite_score) * 100)
+                : "—";
 
         document.getElementById("decision-score").textContent =
-            Number(decision.composite_score || 0).toFixed(3);
+            decision.composite_score !== undefined
+                ? number(decision.composite_score, 3)
+                : "—";
 
         document.getElementById("technical-reason").textContent =
             "Technical Score: " +
-            percent((decision.technical_score || 0) * 100);
+            (decision.technical_score !== undefined
+                ? percent(decision.technical_score * 100)
+                : "—");
 
         document.getElementById("fundamental-reason").textContent =
             "Fundamental Score: " +
-            percent((decision.fundamental_score || 0) * 100);
+            (decision.fundamental_score !== undefined
+                ? percent(decision.fundamental_score * 100)
+                : "—");
 
         document.getElementById("risk-reason").textContent =
             (decision.risk_decision || "Unknown").toUpperCase() +
             " - " +
             (decision.risk_reason || "");
+
+        // --------------------
+        // Open Positions
+        // --------------------
+
+        const positionsTable = document.getElementById("positions-table");
+        positionsTable.innerHTML = "";
+
+        if (data.positions?.length) {
+
+            data.positions.forEach(pos => {
+
+                const row = document.createElement("tr");
+                const pl = Number(pos.unrealized_pl || 0);
+
+                row.innerHTML = `
+                    <td>${pos.ticker}</td>
+                    <td>${number(pos.qty, 0)}</td>
+                    <td>${money(pos.avg_entry_price)}</td>
+                    <td>${money(pos.current_price)}</td>
+                    <td>${money(pos.market_value)}</td>
+                    <td class="${pl >= 0 ? "profit" : "loss"}">
+                        ${money(pos.unrealized_pl)} (${percent(pos.unrealized_plpc)})
+                    </td>
+                `;
+
+                positionsTable.appendChild(row);
+
+            });
+
+        } else {
+
+            positionsTable.innerHTML =
+                "<tr><td colspan='6'>No open positions.</td></tr>";
+
+        }
 
         // --------------------
         // Performance
@@ -112,52 +198,26 @@ async function loadDashboard() {
         const stats = data.trade_stats || {};
 
         document.getElementById("win-rate").textContent =
-            percent(stats.win_rate || 0);
+            percent(stats.win_rate);
 
         document.getElementById("profit-factor").textContent =
-            stats.total_trades ?? 0;
+            number(stats.profit_factor);
 
         document.getElementById("sharpe").textContent =
-            stats.wins ?? 0;
+            number(stats.sharpe_ratio);
 
         document.getElementById("drawdown").textContent =
-            stats.losses ?? 0;
+            percent(stats.max_drawdown_pct);
 
         document.getElementById("expectancy").textContent =
-            money(stats.average_trade || 0);
+            money(stats.expectancy);
 
         // --------------------
         // Recent Decisions
         // --------------------
 
-        const tbody = document.getElementById("decision-table");
-        tbody.innerHTML = "";
-
-        if (data.recent_cycles?.length) {
-
-            data.recent_cycles.forEach(cycle => {
-
-                const row = document.createElement("tr");
-
-                row.innerHTML = `
-                    <td>${new Date(cycle.timestamp).toLocaleString()}</td>
-                    <td>${cycle.ticker || "-"}</td>
-                    <td>${Number(cycle.composite_score || 0).toFixed(3)}</td>
-                    <td class="${(cycle.action || "").toLowerCase()}">${(cycle.action || "").toUpperCase()}</td>
-                    <td class="${cycle.risk_decision === "approved" ? "approved" : "rejected"}">${cycle.risk_decision || "-"}</td>
-                    <td>${cycle.risk_reason || "-"}</td>
-                `;
-
-                tbody.appendChild(row);
-
-            });
-
-        } else {
-
-            tbody.innerHTML =
-                "<tr><td colspan='6'>No decisions yet.</td></tr>";
-
-        }
+        latestCycles = data.recent_cycles || [];
+        renderDecisionsTable();
 
         // --------------------
         // Completed Trades
@@ -182,7 +242,7 @@ async function loadDashboard() {
                         <td class="${pnl >= 0 ? "profit" : "loss"}">${money(pnl)}</td>
                         <td class="${pnl >= 0 ? "profit" : "loss"}">${percent(trade.pnl_pct)}</td>
                         <td>${trade.quantity}</td>
-                        <td>${Number(trade.hold_time_hours || 0).toFixed(1)}</td>
+                        <td>${number(trade.hold_time_hours, 1)}</td>
                     `;
 
                     tradesTable.appendChild(row);
@@ -259,6 +319,50 @@ async function loadDashboard() {
     }
 
 }
+
+function renderDecisionsTable() {
+
+    const tbody = document.getElementById("decision-table");
+    tbody.innerHTML = "";
+
+    const rows = showOnlyTrades
+        ? latestCycles.filter(c => (c.action || "none") !== "none")
+        : latestCycles;
+
+    if (rows.length) {
+
+        rows.forEach(cycle => {
+
+            const row = document.createElement("tr");
+            const action = (cycle.action || "none").toLowerCase();
+
+            row.innerHTML = `
+                <td>${new Date(cycle.timestamp).toLocaleString()}</td>
+                <td>${cycle.ticker || "-"}</td>
+                <td>${cycle.composite_score !== null && cycle.composite_score !== undefined ? number(cycle.composite_score, 3) : "—"}</td>
+                <td class="${action}">${action.toUpperCase()}</td>
+                <td class="${cycle.risk_decision === "approved" ? "approved" : "rejected"}">${cycle.risk_decision || "-"}</td>
+                <td>${cycle.risk_reason || "-"}</td>
+            `;
+
+            tbody.appendChild(row);
+
+        });
+
+    } else {
+
+        tbody.innerHTML = showOnlyTrades
+            ? "<tr><td colspan='6'>No trades in the recent history yet.</td></tr>"
+            : "<tr><td colspan='6'>No decisions yet.</td></tr>";
+
+    }
+
+}
+
+document.getElementById("hide-none-toggle").addEventListener("change", (e) => {
+    showOnlyTrades = e.target.checked;
+    renderDecisionsTable();
+});
 
 loadDashboard();
 
