@@ -47,6 +47,13 @@
 
 <div id="halt-banner" class="halt-banner hidden"></div>
 
+<section class="panel summary-panel">
+<h2>What's Happening</h2>
+<ul id="plain-summary" class="summary-list">
+<li>Loading...</li>
+</ul>
+</section>
+
 <section class="card-grid">
 
 <div class="card">
@@ -123,6 +130,41 @@
 
 </section>
 
+<section class="panel">
+
+<h2>Open Positions</h2>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Ticker</th>
+<th>Qty</th>
+<th>Avg Entry</th>
+<th>Current Price</th>
+<th>Market Value</th>
+<th>Unrealized P/L</th>
+</tr>
+
+</thead>
+
+<tbody id="positions-table">
+
+<tr>
+<td colspan="6">Loading...</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
 <section class="analytics-grid">
 
 <div class="panel">
@@ -185,7 +227,13 @@
 
 <section class="panel">
 
+<div class="panel-header-row">
 <h2>Recent Decisions</h2>
+<label class="toggle-label">
+<input type="checkbox" id="hide-none-toggle">
+Show only actual trades
+</label>
+</div>
 
 <div class="table-wrapper">
 
@@ -257,6 +305,8 @@
 <footer>
 PTBOT V2 • Dashboard updates automatically after every bot run.
 </footer>
+
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="script.js"></script>
