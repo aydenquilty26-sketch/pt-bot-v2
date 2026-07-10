@@ -1,58 +1,48 @@
-from datetime import datetime, timezone
+"""
+Keeps track of currently open trades between bot runs.
+"""
 
-import db
+import json
+import os
+from datetime import datetime
+
+FILE = "open_trades.json"
+
+
+def load():
+    if not os.path.exists(FILE):
+        return {}
+
+    with open(FILE, "r") as f:
+        return json.load(f)
+
+
+def save(data):
+    with open(FILE, "w") as f:
+        json.dump(data, f, indent=2)
 
 
 def record_buy(ticker, price, qty):
-    db.save_open_position(
-        ticker=ticker,
-        qty=qty,
-        entry_price=price,
-    )
+    trades = load()
+
+    trades[ticker] = {
+        "buy_price": float(price),
+        "quantity": float(qty),
+        "buy_time": datetime.utcnow().isoformat(),
+    }
+
+    save(trades)
 
 
 def record_sell(ticker, exit_price=None):
-    position = db.get_open_position(ticker)
+    trades = load()
 
-    if position is None:
-        return None
+    trade = trades.pop(ticker, None)
 
-    ticker = position[0]
-    qty = float(position[1])
-    entry_price = float(position[2])
-    opened_at = position[3]
+    if trade is not None and exit_price is not None:
+        trade["sell_price"] = float(exit_price)
+        trade["sell_time"] = datetime.utcnow().isoformat()
 
-    if exit_price is None:
-        exit_price = entry_price
+    save(trades)
 
-    buy_time = datetime.fromisoformat(opened_at)
-    sell_time = datetime.now(timezone.utc)
-
-    pnl = (exit_price - entry_price) * qty
-    pnl_pct = ((exit_price - entry_price) / entry_price) * 100
-
-    hold_time_hours = (
-        sell_time - buy_time
-    ).total_seconds() / 3600
-
-    db.log_completed_trade(
-        ticker=ticker,
-        buy_time=opened_at,
-        sell_time=sell_time.isoformat(),
-        buy_price=entry_price,
-        sell_price=exit_price,
-        quantity=qty,
-        pnl=pnl,
-        pnl_pct=pnl_pct,
-        hold_time_hours=hold_time_hours,
-    )
-
-    db.remove_open_position(ticker)
-
-    return {
-        "ticker": ticker,
-        "qty": qty,
-        "entry_price": entry_price,
-        "exit_price": exit_price,
-        "pnl": pnl,
-    }
+    return trade
