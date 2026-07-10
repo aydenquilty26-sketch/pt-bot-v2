@@ -74,6 +74,10 @@ async function loadDashboard() {
         document.getElementById("positions").textContent =
             data.open_positions ?? 0;
 
+        // --------------------
+        // AI Decision
+        // --------------------
+
         const decision = data.current_decision || {};
 
         document.getElementById("decision-ticker").textContent =
@@ -101,7 +105,9 @@ async function loadDashboard() {
             " - " +
             (decision.risk_reason || "");
 
+        // --------------------
         // Performance
+        // --------------------
 
         const stats = data.trade_stats || {};
 
@@ -120,7 +126,9 @@ async function loadDashboard() {
         document.getElementById("expectancy").textContent =
             money(stats.average_trade || 0);
 
-        // Recent decisions
+        // --------------------
+        // Recent Decisions
+        // --------------------
 
         const tbody = document.getElementById("decision-table");
         tbody.innerHTML = "";
@@ -151,7 +159,48 @@ async function loadDashboard() {
 
         }
 
-        // Equity chart
+        // --------------------
+        // Completed Trades
+        // --------------------
+
+        const tradesTable = document.getElementById("trades-table");
+
+        if (tradesTable) {
+
+            tradesTable.innerHTML = "";
+
+            if (data.recent_trades?.length) {
+
+                data.recent_trades.forEach(trade => {
+
+                    const row = document.createElement("tr");
+
+                    const pnl = Number(trade.pnl || 0);
+
+                    row.innerHTML = `
+                        <td>${trade.ticker}</td>
+                        <td class="${pnl >= 0 ? "profit" : "loss"}">${money(pnl)}</td>
+                        <td class="${pnl >= 0 ? "profit" : "loss"}">${percent(trade.pnl_pct)}</td>
+                        <td>${trade.quantity}</td>
+                        <td>${Number(trade.hold_time_hours || 0).toFixed(1)}</td>
+                    `;
+
+                    tradesTable.appendChild(row);
+
+                });
+
+            } else {
+
+                tradesTable.innerHTML =
+                    "<tr><td colspan='5'>No completed trades yet.</td></tr>";
+
+            }
+
+        }
+
+        // --------------------
+        // Equity Chart
+        // --------------------
 
         const history = data.equity_history || [];
 
