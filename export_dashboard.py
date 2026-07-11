@@ -242,6 +242,7 @@ def export():
                 ticker,
                 technical_score,
                 fundamental_score,
+                news_score,
                 composite_score,
                 action,
                 risk_decision,

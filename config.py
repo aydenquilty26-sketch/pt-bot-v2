@@ -21,6 +21,10 @@ IS_PAPER = MODE == "paper"
 API_KEY = os.getenv("APCA_API_KEY_ID")
 API_SECRET = os.getenv("APCA_API_SECRET_KEY")
 
+# Free tier: 60 calls/minute at finnhub.io, used only for news headlines,
+# never for trading or pricing.
+FINNHUB_API_KEY = os.getenv("FINNHUB_API_KEY")
+
 WATCHLIST = [t.strip().upper() for t in os.getenv("WATCHLIST", "AAPL").split(",") if t.strip()]
 
 MAX_POSITION_PCT = float(os.getenv("MAX_POSITION_PCT", "0.05"))

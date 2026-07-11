@@ -53,7 +53,23 @@ CREATE TABLE IF NOT EXISTS completed_trades (
 def get_conn():
     conn = sqlite3.connect(config.DB_PATH)
     conn.executescript(SCHEMA)
+    _migrate(conn)
     return conn
+
+
+def _migrate(conn):
+    """Adds columns introduced after the original schema, without
+    touching existing data. Safe to run on every connection - it's a
+    no-op once the column already exists."""
+
+    existing_cols = {
+        row[1]
+        for row in conn.execute("PRAGMA table_info(cycles)").fetchall()
+    }
+
+    if "news_score" not in existing_cols:
+        conn.execute("ALTER TABLE cycles ADD COLUMN news_score REAL")
+        conn.commit()
 
 
 def log_cycle(
@@ -65,7 +81,8 @@ def log_cycle(
     risk_decision,
     risk_reason,
     order_id=None,
-    notes=""
+    notes="",
+    news_score=None,
 ):
     conn = get_conn()
 
@@ -81,9 +98,10 @@ def log_cycle(
             risk_decision,
             risk_reason,
             order_id,
-            notes
+            notes,
+            news_score
         )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """,
         (
             datetime.now(timezone.utc).isoformat(),
@@ -96,6 +114,7 @@ def log_cycle(
             risk_reason,
             order_id,
             notes,
+            news_score,
         ),
     )
 

@@ -13,8 +13,9 @@ import config
 # (phase 2), these get adjusted automatically based on each agent's
 # realized accuracy instead of being fixed here.
 AGENT_WEIGHTS = {
-    "technical": 0.5,
-    "fundamental": 0.5,
+    "technical": 0.4,
+    "fundamental": 0.3,
+    "news": 0.3,
 }
 
 

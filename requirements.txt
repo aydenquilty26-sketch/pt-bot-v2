@@ -3,3 +3,5 @@ yfinance>=0.2.54
 pandas>=2.2
 numpy>=1.26
 python-dotenv>=1.0
+requests>=2.31
+vaderSentiment>=3.3.2

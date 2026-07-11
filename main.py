@@ -16,6 +16,7 @@ from strategy import build_proposal
 from risk import validate_proposal
 from signals.technical import get_technical_signal
 from signals.fundamental import get_fundamental_signal
+from signals.news import get_news_signal
 
 
 def run_cycle():
@@ -52,10 +53,12 @@ def run_cycle():
 
         tech_signal = get_technical_signal(ticker)
         fund_signal = get_fundamental_signal(ticker)
+        news_signal = get_news_signal(ticker)
 
         signals = [
             tech_signal,
             fund_signal,
+            news_signal,
         ]
 
         proposal = build_proposal(
@@ -70,6 +73,7 @@ def run_cycle():
                 ticker=ticker,
                 technical_score=tech_signal["score"],
                 fundamental_score=fund_signal["score"],
+                news_score=news_signal["score"],
                 composite_score=None,
                 action="none",
                 risk_decision="n/a",
@@ -79,7 +83,8 @@ def run_cycle():
             print(
                 f"[{ticker}] no trade "
                 f"(tech={tech_signal['score']}, "
-                f"fund={fund_signal['score']})"
+                f"fund={fund_signal['score']}, "
+                f"news={news_signal['score']})"
             )
 
             continue
@@ -98,6 +103,7 @@ def run_cycle():
                 ticker=ticker,
                 technical_score=tech_signal["score"],
                 fundamental_score=fund_signal["score"],
+                news_score=news_signal["score"],
                 composite_score=proposal["composite_score"],
                 action=proposal["action"],
                 risk_decision="rejected",
@@ -137,6 +143,7 @@ def run_cycle():
             ticker=ticker,
             technical_score=tech_signal["score"],
             fundamental_score=fund_signal["score"],
+            news_score=news_signal["score"],
             composite_score=proposal["composite_score"],
             action=proposal["action"],
             risk_decision="approved",
