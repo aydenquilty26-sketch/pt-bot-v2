@@ -47,6 +47,17 @@ CREATE TABLE IF NOT EXISTS completed_trades (
     pnl_pct REAL,
     hold_time_hours REAL
 );
+
+CREATE TABLE IF NOT EXISTS market_regime_log (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    timestamp TEXT NOT NULL,
+    trend TEXT,
+    vix REAL,
+    vix_tier TEXT,
+    risk_multiplier REAL,
+    threshold_adjustment REAL,
+    rationale TEXT
+);
 """
 
 
@@ -183,6 +194,41 @@ def log_halt(reason):
         (
             datetime.now(timezone.utc).isoformat(),
             reason,
+        ),
+    )
+
+    conn.commit()
+    conn.close()
+
+
+def log_market_regime(regime: dict):
+    """One row per cycle run, not per ticker - the regime is the same
+    market-wide context applied to every ticker in that run, so logging
+    it 8 times (once per watchlist ticker) would just be duplication."""
+
+    conn = get_conn()
+
+    conn.execute(
+        """
+        INSERT INTO market_regime_log (
+            timestamp,
+            trend,
+            vix,
+            vix_tier,
+            risk_multiplier,
+            threshold_adjustment,
+            rationale
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+        """,
+        (
+            datetime.now(timezone.utc).isoformat(),
+            regime.get("trend"),
+            regime.get("vix"),
+            regime.get("vix_tier"),
+            regime.get("risk_multiplier"),
+            regime.get("threshold_adjustment"),
+            regime.get("rationale"),
         ),
     )
 

@@ -417,6 +417,7 @@ def export():
             "confidence_distribution": {"low": 0, "medium": 0, "high": 0},
             "watchlist_snapshot": [],
             "market_context": {"trend": None, "spy_return_pct": None},
+            "active_regime": None,
             "sector_allocation": sector_allocation,
             "cash_deployed_pct": None,
             "risk_reward_ratio": round(config.TAKE_PROFIT_PCT / config.STOP_LOSS_PCT, 2),
@@ -493,7 +494,17 @@ def export():
         confidence_distribution = _compute_confidence_distribution(conn)
         watchlist_snapshot = _get_watchlist_snapshot(conn)
 
+        regime_row = conn.execute("""
+            SELECT timestamp, trend, vix, vix_tier, risk_multiplier,
+                   threshold_adjustment, rationale
+            FROM market_regime_log
+            ORDER BY id DESC
+            LIMIT 1
+        """).fetchone()
+
         conn.close()
+
+        active_regime = dict(regime_row) if regime_row else None
 
         equity_history = [dict(r) for r in reversed(equity_rows)]
         recent_cycles = [dict(r) for r in cycle_rows]
@@ -623,6 +634,7 @@ def export():
             "confidence_distribution": confidence_distribution,
             "watchlist_snapshot": watchlist_snapshot,
             "market_context": market_context,
+            "active_regime": active_regime,
             "sector_allocation": sector_allocation,
             "cash_deployed_pct": cash_deployed_pct,
             "risk_reward_ratio": round(config.TAKE_PROFIT_PCT / config.STOP_LOSS_PCT, 2),

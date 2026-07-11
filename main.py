@@ -17,6 +17,7 @@ from risk import validate_proposal
 from signals.technical import get_technical_signal
 from signals.fundamental import get_fundamental_signal
 from signals.news import get_news_signal
+from signals.market_regime import get_market_regime
 
 
 def run_cycle():
@@ -45,6 +46,20 @@ def run_cycle():
         f"in positions: ${total_exposure:,.2f}"
     )
 
+    # Computed once per cycle, not per ticker - this is market-wide
+    # context (SPY trend + VIX), the same for every ticker checked this
+    # run.
+    regime = get_market_regime()
+    db.log_market_regime(regime)
+
+    print(
+        f"Market regime: trend={regime['trend']} | "
+        f"VIX={regime['vix']} ({regime['vix_tier']}) | "
+        f"risk_multiplier={regime['risk_multiplier']} | "
+        f"threshold_adjustment=+{regime['threshold_adjustment']} | "
+        f"{regime['rationale']}"
+    )
+
     proposals_this_cycle = 0
 
     for ticker in config.WATCHLIST:
@@ -65,6 +80,7 @@ def run_cycle():
             ticker,
             signals,
             has_position,
+            threshold_adjustment=regime["threshold_adjustment"],
         )
 
         if proposal is None:
@@ -95,6 +111,7 @@ def run_cycle():
             proposal,
             equity,
             total_exposure,
+            risk_multiplier=regime["risk_multiplier"],
         )
 
         if not risk_result["approved"]:

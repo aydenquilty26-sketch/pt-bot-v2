@@ -30,9 +30,18 @@ def check_drawdown_halt(current_equity: float) -> tuple[bool, str]:
     return False, ""
 
 
-def validate_proposal(proposal: dict, account_equity: float, total_exposure: float) -> dict:
+def validate_proposal(
+    proposal: dict,
+    account_equity: float,
+    total_exposure: float,
+    risk_multiplier: float = 1.0,
+) -> dict:
     """
     Returns {"approved": bool, "reason": str, "position_size_usd": float}
+
+    risk_multiplier comes from the market regime agent - 1.0 in normal
+    conditions, scaled down in a bearish/volatile market, scaled up only
+    modestly in calm bullish conditions.
     """
     ticker = proposal["ticker"]
 
@@ -46,7 +55,7 @@ def validate_proposal(proposal: dict, account_equity: float, total_exposure: flo
     if halted:
         return {"approved": False, "reason": f"halted: {halt_reason}", "position_size_usd": 0}
 
-    position_size_usd = account_equity * config.MAX_POSITION_PCT
+    position_size_usd = account_equity * config.MAX_POSITION_PCT * risk_multiplier
 
     projected_exposure = (total_exposure + position_size_usd) / account_equity
     if projected_exposure > config.MAX_TOTAL_EXPOSURE_PCT:

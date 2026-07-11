@@ -19,7 +19,12 @@ AGENT_WEIGHTS = {
 }
 
 
-def build_proposal(ticker: str, signals: list, has_position: bool) -> dict | None:
+def build_proposal(
+    ticker: str,
+    signals: list,
+    has_position: bool,
+    threshold_adjustment: float = 0.0,
+) -> dict | None:
     weighted_sum = 0.0
     weight_total = 0.0
     contributing = []
@@ -40,7 +45,13 @@ def build_proposal(ticker: str, signals: list, has_position: bool) -> dict | Non
 
     composite_score = weighted_sum / weight_total
 
-    if composite_score >= config.TRADE_SCORE_THRESHOLD and not has_position:
+    # threshold_adjustment (from the market regime agent) only raises the
+    # bar for new buys in unfavorable conditions. The sell side always
+    # uses the base threshold - staying able to exit shouldn't get harder
+    # just because the market looks shaky.
+    buy_threshold = config.TRADE_SCORE_THRESHOLD + threshold_adjustment
+
+    if composite_score >= buy_threshold and not has_position:
         action = "buy"
     elif composite_score <= -config.TRADE_SCORE_THRESHOLD and has_position:
         action = "sell"
