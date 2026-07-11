@@ -326,6 +326,30 @@ async function loadDashboard() {
                 : "—";
 
         // --------------------
+        // Adaptive Risk (Active Regime)
+        // --------------------
+
+        const regime = data.active_regime || {};
+
+        document.getElementById("regime-vix").textContent =
+            (regime.vix !== undefined && regime.vix !== null)
+                ? `${number(regime.vix, 1)} (${regime.vix_tier || "—"})`
+                : "—";
+
+        document.getElementById("regime-multiplier").textContent =
+            (regime.risk_multiplier !== undefined && regime.risk_multiplier !== null)
+                ? `${number(regime.risk_multiplier, 2)}x`
+                : "—";
+
+        document.getElementById("regime-threshold").textContent =
+            (regime.threshold_adjustment !== undefined && regime.threshold_adjustment !== null)
+                ? `+${number(regime.threshold_adjustment, 2)}`
+                : "—";
+
+        document.getElementById("regime-rationale").textContent =
+            regime.rationale || "No regime data yet.";
+
+        // --------------------
         // Live Watchlist
         // --------------------
 
