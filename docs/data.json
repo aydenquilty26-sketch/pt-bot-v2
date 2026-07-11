@@ -186,9 +186,151 @@
       "equity": 100019.75,
       "cash": 90579.85,
       "positions_value": 9439.901
+    },
+    {
+      "timestamp": "2026-07-11T01:31:44.189259+00:00",
+      "equity": 100019.75,
+      "cash": 90579.85,
+      "positions_value": 9439.901
     }
   ],
   "recent_cycles": [
+    {
+      "timestamp": "2026-07-11T01:31:46.255920+00:00",
+      "ticker": "JPM",
+      "technical_score": 0.1,
+      "fundamental_score": 0.8,
+      "news_score": 0.0,
+      "composite_score": null,
+      "action": "none",
+      "risk_decision": "n/a",
+      "risk_reason": "no trade proposed",
+      "order_id": null,
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
+    },
+    {
+      "timestamp": "2026-07-11T01:31:45.954687+00:00",
+      "ticker": "META",
+      "technical_score": -0.1,
+      "fundamental_score": 0.9,
+      "news_score": 0.0,
+      "composite_score": null,
+      "action": "none",
+      "risk_decision": "n/a",
+      "risk_reason": "no trade proposed",
+      "order_id": null,
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
+    },
+    {
+      "timestamp": "2026-07-11T01:31:45.764297+00:00",
+      "ticker": "TSLA",
+      "technical_score": -0.1,
+      "fundamental_score": 0.2,
+      "news_score": 0.0,
+      "composite_score": null,
+      "action": "none",
+      "risk_decision": "n/a",
+      "risk_reason": "no trade proposed",
+      "order_id": null,
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
+    },
+    {
+      "timestamp": "2026-07-11T01:31:45.573950+00:00",
+      "ticker": "NVDA",
+      "technical_score": -0.1,
+      "fundamental_score": 0.9,
+      "news_score": 0.0,
+      "composite_score": null,
+      "action": "none",
+      "risk_decision": "n/a",
+      "risk_reason": "no trade proposed",
+      "order_id": null,
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
+    },
+    {
+      "timestamp": "2026-07-11T01:31:45.332730+00:00",
+      "ticker": "AMZN",
+      "technical_score": -0.1,
+      "fundamental_score": 0.6,
+      "news_score": 0.0,
+      "composite_score": null,
+      "action": "none",
+      "risk_decision": "n/a",
+      "risk_reason": "no trade proposed",
+      "order_id": null,
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
+    },
+    {
+      "timestamp": "2026-07-11T01:31:45.129271+00:00",
+      "ticker": "GOOGL",
+      "technical_score": -0.1,
+      "fundamental_score": 0.9,
+      "news_score": 0.0,
+      "composite_score": null,
+      "action": "none",
+      "risk_decision": "n/a",
+      "risk_reason": "no trade proposed",
+      "order_id": null,
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
+    },
+    {
+      "timestamp": "2026-07-11T01:31:44.947671+00:00",
+      "ticker": "MSFT",
+      "technical_score": -0.1,
+      "fundamental_score": 0.9,
+      "news_score": 0.0,
+      "composite_score": null,
+      "action": "none",
+      "risk_decision": "n/a",
+      "risk_reason": "no trade proposed",
+      "order_id": null,
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
+    },
+    {
+      "timestamp": "2026-07-11T01:31:44.710220+00:00",
+      "ticker": "AAPL",
+      "technical_score": 0.4,
+      "fundamental_score": 0.8,
+      "news_score": 0.0,
+      "composite_score": null,
+      "action": "none",
+      "risk_decision": "n/a",
+      "risk_reason": "no trade proposed",
+      "order_id": null,
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
+    },
     {
       "timestamp": "2026-07-11T01:16:15.024332+00:00",
       "ticker": "JPM",
@@ -200,7 +342,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-11T01:16:14.605928+00:00",
@@ -213,7 +359,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-11T01:16:14.296036+00:00",
@@ -226,7 +376,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-11T01:16:14.040095+00:00",
@@ -239,7 +393,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-11T01:16:13.826432+00:00",
@@ -252,7 +410,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-11T01:16:13.636914+00:00",
@@ -265,7 +427,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-11T01:16:13.256531+00:00",
@@ -278,7 +444,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-11T01:16:12.833637+00:00",
@@ -291,7 +461,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-11T01:02:39.757844+00:00",
@@ -304,7 +478,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-11T01:02:39.448616+00:00",
@@ -317,7 +495,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-11T01:02:39.255400+00:00",
@@ -330,7 +512,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-11T01:02:38.992940+00:00",
@@ -343,7 +529,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-11T01:02:38.787943+00:00",
@@ -356,7 +546,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-11T01:02:38.565518+00:00",
@@ -369,7 +563,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-11T01:02:38.344835+00:00",
@@ -382,7 +580,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-11T01:02:38.060824+00:00",
@@ -395,7 +597,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T23:41:11.652835+00:00",
@@ -408,7 +614,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T23:41:11.272813+00:00",
@@ -421,7 +631,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T23:41:10.779592+00:00",
@@ -434,7 +648,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T23:41:10.465338+00:00",
@@ -447,7 +665,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T23:41:10.031598+00:00",
@@ -460,7 +682,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T23:41:09.642642+00:00",
@@ -473,7 +699,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T23:41:09.178905+00:00",
@@ -486,7 +716,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T23:41:08.765252+00:00",
@@ -499,7 +733,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T21:22:17.339199+00:00",
@@ -512,7 +750,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T21:22:16.752678+00:00",
@@ -525,7 +767,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T21:22:16.390517+00:00",
@@ -538,7 +784,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T21:22:16.000182+00:00",
@@ -551,7 +801,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T21:22:15.616892+00:00",
@@ -564,7 +818,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T21:22:15.228100+00:00",
@@ -577,7 +835,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T21:22:14.720913+00:00",
@@ -590,7 +852,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T21:22:14.250805+00:00",
@@ -603,7 +869,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T21:08:12.501501+00:00",
@@ -616,7 +886,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T21:08:11.855659+00:00",
@@ -629,7 +903,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T21:08:11.315505+00:00",
@@ -642,7 +920,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T21:08:10.788269+00:00",
@@ -655,7 +937,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T21:08:10.205126+00:00",
@@ -668,7 +954,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T21:08:09.710320+00:00",
@@ -681,7 +971,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T21:08:09.132606+00:00",
@@ -694,7 +988,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T21:08:08.554810+00:00",
@@ -707,7 +1005,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:56:53.938702+00:00",
@@ -720,7 +1022,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:56:53.440829+00:00",
@@ -733,7 +1039,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:56:53.085598+00:00",
@@ -746,7 +1056,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:56:52.841748+00:00",
@@ -759,7 +1073,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:56:52.475580+00:00",
@@ -772,7 +1090,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:56:52.194862+00:00",
@@ -785,7 +1107,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:56:51.977864+00:00",
@@ -798,7 +1124,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:56:51.692602+00:00",
@@ -811,7 +1141,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:48:39.921602+00:00",
@@ -824,7 +1158,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:48:39.594187+00:00",
@@ -837,7 +1175,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:48:39.367296+00:00",
@@ -850,7 +1192,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:48:39.087072+00:00",
@@ -863,7 +1209,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:48:38.785712+00:00",
@@ -876,7 +1226,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:48:38.563501+00:00",
@@ -889,7 +1243,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:48:38.283677+00:00",
@@ -902,7 +1260,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:48:37.997954+00:00",
@@ -915,7 +1277,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:06:44.253998+00:00",
@@ -928,7 +1294,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:06:43.920263+00:00",
@@ -941,7 +1311,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:06:43.634324+00:00",
@@ -954,7 +1328,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:06:43.352003+00:00",
@@ -967,7 +1345,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:06:43.087174+00:00",
@@ -980,7 +1362,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:06:42.864879+00:00",
@@ -993,7 +1379,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:06:42.624761+00:00",
@@ -1006,7 +1396,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:06:42.294886+00:00",
@@ -1019,7 +1413,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:06:03.262542+00:00",
@@ -1032,7 +1430,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:06:02.781928+00:00",
@@ -1045,7 +1447,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:06:02.446528+00:00",
@@ -1058,7 +1464,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:06:02.165765+00:00",
@@ -1071,7 +1481,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:06:01.929392+00:00",
@@ -1084,7 +1498,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:06:01.670636+00:00",
@@ -1097,7 +1515,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:06:01.380378+00:00",
@@ -1110,7 +1532,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T20:06:01.087273+00:00",
@@ -1123,7 +1549,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:46:14.353056+00:00",
@@ -1136,7 +1566,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:46:13.898745+00:00",
@@ -1149,7 +1583,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:46:13.633743+00:00",
@@ -1162,7 +1600,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:46:13.361506+00:00",
@@ -1175,7 +1617,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:46:12.983776+00:00",
@@ -1188,7 +1634,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:46:12.764333+00:00",
@@ -1201,7 +1651,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:46:12.429379+00:00",
@@ -1214,7 +1668,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:46:11.474097+00:00",
@@ -1227,7 +1685,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:38:38.334919+00:00",
@@ -1240,7 +1702,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:38:38.034504+00:00",
@@ -1253,7 +1719,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:38:37.773642+00:00",
@@ -1266,7 +1736,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:38:37.550702+00:00",
@@ -1279,7 +1753,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:38:37.315502+00:00",
@@ -1292,7 +1770,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:38:37.096314+00:00",
@@ -1305,7 +1787,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:38:36.814397+00:00",
@@ -1318,7 +1804,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:38:36.495817+00:00",
@@ -1331,7 +1821,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:34:44.541011+00:00",
@@ -1344,7 +1838,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:34:44.093314+00:00",
@@ -1357,7 +1855,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:34:43.539195+00:00",
@@ -1370,7 +1872,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:34:43.211159+00:00",
@@ -1383,7 +1889,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:34:42.752956+00:00",
@@ -1396,7 +1906,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:34:42.481322+00:00",
@@ -1409,7 +1923,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:34:42.203839+00:00",
@@ -1422,7 +1940,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:34:41.707489+00:00",
@@ -1435,7 +1957,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:31:23.273272+00:00",
@@ -1448,7 +1974,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:31:22.859599+00:00",
@@ -1461,7 +1991,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:31:22.101332+00:00",
@@ -1474,7 +2008,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:31:21.623304+00:00",
@@ -1487,7 +2025,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:31:21.215324+00:00",
@@ -1500,7 +2042,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:31:20.677047+00:00",
@@ -1513,7 +2059,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:31:20.448346+00:00",
@@ -1526,7 +2076,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:31:20.035292+00:00",
@@ -1539,7 +2093,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:24:31.585560+00:00",
@@ -1552,7 +2110,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:24:31.249621+00:00",
@@ -1565,7 +2127,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:24:30.955936+00:00",
@@ -1578,7 +2144,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:24:30.733679+00:00",
@@ -1591,7 +2161,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:24:30.468700+00:00",
@@ -1604,7 +2178,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:24:30.216871+00:00",
@@ -1617,7 +2195,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:24:29.663840+00:00",
@@ -1630,7 +2212,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:24:29.326719+00:00",
@@ -1643,7 +2229,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:22:41.203682+00:00",
@@ -1656,7 +2246,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:22:40.859013+00:00",
@@ -1669,7 +2263,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:22:40.530482+00:00",
@@ -1682,7 +2280,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:22:40.260399+00:00",
@@ -1695,7 +2297,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:22:40.045707+00:00",
@@ -1708,7 +2314,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:22:39.856833+00:00",
@@ -1721,7 +2331,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:22:39.551473+00:00",
@@ -1734,7 +2348,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:22:39.192929+00:00",
@@ -1747,7 +2365,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:15:38.419343+00:00",
@@ -1760,7 +2382,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:15:37.732634+00:00",
@@ -1773,7 +2399,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:15:37.268313+00:00",
@@ -1786,7 +2416,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:15:36.804788+00:00",
@@ -1799,7 +2433,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:15:36.315886+00:00",
@@ -1812,7 +2450,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:15:35.810143+00:00",
@@ -1825,7 +2467,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:15:35.415360+00:00",
@@ -1838,7 +2484,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:15:34.775526+00:00",
@@ -1851,7 +2501,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:00:43.572415+00:00",
@@ -1864,7 +2518,11 @@
       "risk_decision": "approved",
       "risk_reason": "within limits",
       "order_id": "14331807-96db-4dd1-91ce-c267786afe60",
-      "notes": "submitted"
+      "notes": "submitted",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:00:43.244319+00:00",
@@ -1877,7 +2535,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:00:41.913310+00:00",
@@ -1890,7 +2552,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:00:41.672380+00:00",
@@ -1903,7 +2569,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:00:41.413419+00:00",
@@ -1916,7 +2586,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:00:41.182100+00:00",
@@ -1929,7 +2603,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:00:40.964619+00:00",
@@ -1942,7 +2620,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T19:00:40.628303+00:00",
@@ -1955,7 +2637,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T18:54:35.029890+00:00",
@@ -1968,7 +2654,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T18:50:47.180775+00:00",
@@ -1981,7 +2671,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T16:41:21.200927+00:00",
@@ -1994,7 +2688,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T16:33:33.900058+00:00",
@@ -2007,7 +2705,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T16:23:58.544228+00:00",
@@ -2020,7 +2722,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T16:18:39.195983+00:00",
@@ -2033,7 +2739,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T16:06:22.216572+00:00",
@@ -2046,7 +2756,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T16:01:01.494422+00:00",
@@ -2059,7 +2773,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T15:51:05.279235+00:00",
@@ -2072,7 +2790,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T15:38:34.327178+00:00",
@@ -2085,7 +2807,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T15:34:26.846482+00:00",
@@ -2098,7 +2824,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T15:29:29.317965+00:00",
@@ -2111,7 +2841,11 @@
       "risk_decision": "n/a",
       "risk_reason": "no trade proposed",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T15:21:54.220555+00:00",
@@ -2124,7 +2858,11 @@
       "risk_decision": "approved",
       "risk_reason": "within limits",
       "order_id": "444514b0-0798-4abc-99fa-bfe0a5784afd",
-      "notes": "submitted"
+      "notes": "submitted",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     },
     {
       "timestamp": "2026-07-10T15:11:08.242879+00:00",
@@ -2137,7 +2875,11 @@
       "risk_decision": "rejected",
       "risk_reason": "position size too small",
       "order_id": null,
-      "notes": ""
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
     }
   ],
   "recent_trades": [],
@@ -2184,7 +2926,11 @@
     "risk_decision": "approved",
     "risk_reason": "within limits",
     "order_id": "14331807-96db-4dd1-91ce-c267786afe60",
-    "notes": "submitted"
+    "notes": "submitted",
+    "stop_price": null,
+    "take_profit_price": null,
+    "risk_amount": null,
+    "reward_amount": null
   },
   "trade_stats": {
     "total_trades": 0,
@@ -2221,7 +2967,7 @@
       "news_score": 0.0,
       "composite_score": null,
       "action": "none",
-      "timestamp": "2026-07-11T01:16:12.833637+00:00"
+      "timestamp": "2026-07-11T01:31:44.710220+00:00"
     },
     {
       "ticker": "MSFT",
@@ -2230,7 +2976,7 @@
       "news_score": 0.0,
       "composite_score": null,
       "action": "none",
-      "timestamp": "2026-07-11T01:16:13.256531+00:00"
+      "timestamp": "2026-07-11T01:31:44.947671+00:00"
     },
     {
       "ticker": "GOOGL",
@@ -2239,7 +2985,7 @@
       "news_score": 0.0,
       "composite_score": null,
       "action": "none",
-      "timestamp": "2026-07-11T01:16:13.636914+00:00"
+      "timestamp": "2026-07-11T01:31:45.129271+00:00"
     },
     {
       "ticker": "AMZN",
@@ -2248,7 +2994,7 @@
       "news_score": 0.0,
       "composite_score": null,
       "action": "none",
-      "timestamp": "2026-07-11T01:16:13.826432+00:00"
+      "timestamp": "2026-07-11T01:31:45.332730+00:00"
     },
     {
       "ticker": "NVDA",
@@ -2257,7 +3003,7 @@
       "news_score": 0.0,
       "composite_score": null,
       "action": "none",
-      "timestamp": "2026-07-11T01:16:14.040095+00:00"
+      "timestamp": "2026-07-11T01:31:45.573950+00:00"
     },
     {
       "ticker": "TSLA",
@@ -2266,7 +3012,7 @@
       "news_score": 0.0,
       "composite_score": null,
       "action": "none",
-      "timestamp": "2026-07-11T01:16:14.296036+00:00"
+      "timestamp": "2026-07-11T01:31:45.764297+00:00"
     },
     {
       "ticker": "META",
@@ -2275,7 +3021,7 @@
       "news_score": 0.0,
       "composite_score": null,
       "action": "none",
-      "timestamp": "2026-07-11T01:16:14.605928+00:00"
+      "timestamp": "2026-07-11T01:31:45.954687+00:00"
     },
     {
       "ticker": "JPM",
@@ -2284,7 +3030,7 @@
       "news_score": 0.0,
       "composite_score": null,
       "action": "none",
-      "timestamp": "2026-07-11T01:16:15.024332+00:00"
+      "timestamp": "2026-07-11T01:31:46.255920+00:00"
     }
   ],
   "market_context": {
@@ -2311,5 +3057,5 @@
     "In its most recent check, the bot reviewed 8 stocks and found 0 worth acting on - the rest didn't meet its confidence bar, which is normal.",
     "No trades have closed yet, so win rate and profit factor aren't meaningful yet."
   ],
-  "last_updated": "2026-07-11T01:16:12.134546+00:00"
+  "last_updated": "2026-07-11T01:31:44.189259+00:00"
 }
