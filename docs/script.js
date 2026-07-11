@@ -198,6 +198,37 @@ async function loadDashboard() {
         }
 
         // --------------------
+        // Sector Allocation
+        // --------------------
+
+        const sectorEl = document.getElementById("sector-allocation");
+        sectorEl.innerHTML = "";
+
+        if (data.sector_allocation?.length) {
+
+            data.sector_allocation.forEach(s => {
+
+                const row = document.createElement("div");
+                row.className = "confidence-bar-row";
+                row.innerHTML = `
+                    <div class="confidence-bar-label">${s.sector}</div>
+                    <div class="confidence-bar-track">
+                        <div class="confidence-bar-fill" style="width:${s.pct}%"></div>
+                    </div>
+                    <div class="confidence-bar-count">${s.pct}%</div>
+                `;
+                sectorEl.appendChild(row);
+
+            });
+
+        } else {
+
+            sectorEl.innerHTML =
+                "<div class='metric-row'><span>No open positions to break down yet.</span></div>";
+
+        }
+
+        // --------------------
         // Performance
         // --------------------
 
@@ -217,6 +248,153 @@ async function loadDashboard() {
 
         document.getElementById("expectancy").textContent =
             money(stats.expectancy);
+
+        document.getElementById("total-trades").textContent =
+            stats.total_trades ?? 0;
+
+        document.getElementById("avg-win").textContent =
+            money(stats.average_win);
+
+        document.getElementById("avg-loss").textContent =
+            stats.average_loss !== null && stats.average_loss !== undefined
+                ? "-" + money(stats.average_loss)
+                : "—";
+
+        document.getElementById("avg-hold").textContent =
+            stats.avg_hold_hours !== null && stats.avg_hold_hours !== undefined
+                ? number(stats.avg_hold_hours, 1) + " hrs"
+                : "—";
+
+        document.getElementById("largest-win").textContent =
+            money(stats.largest_win);
+
+        document.getElementById("largest-loss").textContent =
+            money(stats.largest_loss);
+
+        // --------------------
+        // Market Context
+        // --------------------
+
+        const context = data.market_context || {};
+
+        const trendEl = document.getElementById("spy-trend");
+        trendEl.textContent = context.trend
+            ? context.trend.charAt(0).toUpperCase() + context.trend.slice(1)
+            : "—";
+        trendEl.classList.remove("profit", "loss");
+        if (context.trend === "bullish") trendEl.classList.add("profit");
+        if (context.trend === "bearish") trendEl.classList.add("loss");
+
+        const contextReturnEl = document.getElementById("context-return");
+        contextReturnEl.textContent = percent(data.total_pnl_pct);
+        contextReturnEl.classList.remove("profit", "loss");
+        if (data.total_pnl_pct !== null && data.total_pnl_pct !== undefined) {
+            contextReturnEl.classList.add(data.total_pnl_pct >= 0 ? "profit" : "loss");
+        }
+
+        const spyReturnEl = document.getElementById("spy-return");
+        spyReturnEl.textContent = percent(context.spy_return_pct);
+        spyReturnEl.classList.remove("profit", "loss");
+        if (context.spy_return_pct !== null && context.spy_return_pct !== undefined) {
+            spyReturnEl.classList.add(context.spy_return_pct >= 0 ? "profit" : "loss");
+        }
+
+        document.getElementById("cash-deployed").textContent =
+            percent(data.cash_deployed_pct);
+
+        document.getElementById("risk-reward").textContent =
+            data.risk_reward_ratio
+                ? `1 : ${data.risk_reward_ratio}`
+                : "—";
+
+        // --------------------
+        // Live Watchlist
+        // --------------------
+
+        const watchlistTable = document.getElementById("watchlist-table");
+        watchlistTable.innerHTML = "";
+
+        if (data.watchlist_snapshot?.length) {
+
+            data.watchlist_snapshot.forEach(row => {
+
+                const tr = document.createElement("tr");
+                const action = (row.action || "none").toLowerCase();
+
+                tr.innerHTML = `
+                    <td>${row.ticker}</td>
+                    <td>${row.technical_score !== null ? number(row.technical_score, 2) : "—"}</td>
+                    <td>${row.fundamental_score !== null ? number(row.fundamental_score, 2) : "—"}</td>
+                    <td>${row.news_score !== null && row.news_score !== undefined ? number(row.news_score, 2) : "—"}</td>
+                    <td>${row.composite_score !== null ? number(row.composite_score, 3) : "—"}</td>
+                    <td class="${action}">${action.toUpperCase()}</td>
+                `;
+
+                watchlistTable.appendChild(tr);
+
+            });
+
+        } else {
+
+            watchlistTable.innerHTML =
+                "<tr><td colspan='6'>No watchlist data yet.</td></tr>";
+
+        }
+
+        // --------------------
+        // Decision Quality
+        // --------------------
+
+        const rejectionsEl = document.getElementById("rejection-reasons");
+        rejectionsEl.innerHTML = "";
+
+        if (data.rejection_reasons?.length) {
+            data.rejection_reasons.forEach(r => {
+                const row = document.createElement("div");
+                row.className = "metric-row";
+                row.innerHTML = `<span>${r.reason || "Unknown"}</span><span>${r.count}</span>`;
+                rejectionsEl.appendChild(row);
+            });
+        } else {
+            rejectionsEl.innerHTML =
+                "<div class='metric-row'><span>No rejected trades yet.</span></div>";
+        }
+
+        const dist = data.confidence_distribution || { low: 0, medium: 0, high: 0 };
+        const distTotal = (dist.low || 0) + (dist.medium || 0) + (dist.high || 0);
+
+        const distEl = document.getElementById("confidence-distribution");
+        distEl.innerHTML = "";
+
+        if (distTotal > 0) {
+
+            [
+                ["Low (0.40–0.55)", dist.low],
+                ["Medium (0.55–0.70)", dist.medium],
+                ["High (0.70+)", dist.high],
+            ].forEach(([label, count]) => {
+
+                const pct = distTotal ? (count / distTotal) * 100 : 0;
+
+                const row = document.createElement("div");
+                row.className = "confidence-bar-row";
+                row.innerHTML = `
+                    <div class="confidence-bar-label">${label}</div>
+                    <div class="confidence-bar-track">
+                        <div class="confidence-bar-fill" style="width:${pct}%"></div>
+                    </div>
+                    <div class="confidence-bar-count">${count}</div>
+                `;
+                distEl.appendChild(row);
+
+            });
+
+        } else {
+
+            distEl.innerHTML =
+                "<div class='metric-row'><span>No proposals scored yet.</span></div>";
+
+        }
 
         // --------------------
         // Recent Decisions
