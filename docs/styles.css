@@ -942,3 +942,16 @@ font-weight:600;
 flex-shrink:0;
 
 }
+
+/* -------------------- */
+/* Market regime rationale text */
+/* -------------------- */
+
+.regime-rationale{
+
+font-size:12px;
+color:var(--muted);
+line-height:1.5;
+margin-top:12px;
+
+}
