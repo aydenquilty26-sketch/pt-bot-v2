@@ -449,7 +449,11 @@ def export():
                 risk_decision,
                 risk_reason,
                 order_id,
-                notes
+                notes,
+                stop_price,
+                take_profit_price,
+                risk_amount,
+                reward_amount
             FROM cycles
             ORDER BY id DESC
             LIMIT 200

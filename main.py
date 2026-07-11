@@ -139,6 +139,29 @@ def run_cycle():
                 qty,
             )
 
+        # Dollar risk/reward only exists for a buy that actually got a
+        # fill price and share count back from the broker - a sell, a
+        # rejected order, or a failed submission all leave these as None
+        # rather than a misleading zero.
+        stop_price = None
+        take_profit_price = None
+        risk_amount = None
+        reward_amount = None
+
+        if (
+            proposal["action"] == "buy"
+            and exec_result.get("success")
+            and exec_result.get("qty")
+        ):
+            stop_price = exec_result.get("stop_price")
+            take_profit_price = exec_result.get("take_profit_price")
+            filled_qty = exec_result["qty"]
+
+            if stop_price is not None:
+                risk_amount = round((last_price - stop_price) * filled_qty, 2)
+            if take_profit_price is not None:
+                reward_amount = round((take_profit_price - last_price) * filled_qty, 2)
+
         db.log_cycle(
             ticker=ticker,
             technical_score=tech_signal["score"],
@@ -150,6 +173,10 @@ def run_cycle():
             risk_reason=risk_result["reason"],
             order_id=exec_result.get("order_id"),
             notes=exec_result.get("reason", ""),
+            stop_price=stop_price,
+            take_profit_price=take_profit_price,
+            risk_amount=risk_amount,
+            reward_amount=reward_amount,
         )
 
         status = (

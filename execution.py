@@ -75,6 +75,9 @@ def submit_buy(ticker: str, position_size_usd: float, last_price: float) -> dict
             "success": True,
             "reason": "submitted",
             "order_id": str(order.id),
+            "qty": qty,
+            "stop_price": stop_price,
+            "take_profit_price": take_profit_price,
         }
 
     except Exception as e:

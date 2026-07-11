@@ -67,9 +67,19 @@ def _migrate(conn):
         for row in conn.execute("PRAGMA table_info(cycles)").fetchall()
     }
 
-    if "news_score" not in existing_cols:
-        conn.execute("ALTER TABLE cycles ADD COLUMN news_score REAL")
-        conn.commit()
+    new_columns = {
+        "news_score": "REAL",
+        "stop_price": "REAL",
+        "take_profit_price": "REAL",
+        "risk_amount": "REAL",
+        "reward_amount": "REAL",
+    }
+
+    for col, col_type in new_columns.items():
+        if col not in existing_cols:
+            conn.execute(f"ALTER TABLE cycles ADD COLUMN {col} {col_type}")
+
+    conn.commit()
 
 
 def log_cycle(
@@ -83,6 +93,10 @@ def log_cycle(
     order_id=None,
     notes="",
     news_score=None,
+    stop_price=None,
+    take_profit_price=None,
+    risk_amount=None,
+    reward_amount=None,
 ):
     conn = get_conn()
 
@@ -99,9 +113,13 @@ def log_cycle(
             risk_reason,
             order_id,
             notes,
-            news_score
+            news_score,
+            stop_price,
+            take_profit_price,
+            risk_amount,
+            reward_amount
         )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """,
         (
             datetime.now(timezone.utc).isoformat(),
@@ -115,6 +133,10 @@ def log_cycle(
             order_id,
             notes,
             news_score,
+            stop_price,
+            take_profit_price,
+            risk_amount,
+            reward_amount,
         ),
     )
 
