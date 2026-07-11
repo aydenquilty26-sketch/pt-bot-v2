@@ -138,6 +138,24 @@ async function loadDashboard() {
                 ? number(decision.composite_score, 3)
                 : "—";
 
+        document.getElementById("decision-stop").textContent =
+            decision.stop_price !== undefined && decision.stop_price !== null
+                ? money(decision.stop_price)
+                : "—";
+
+        document.getElementById("decision-target").textContent =
+            decision.take_profit_price !== undefined && decision.take_profit_price !== null
+                ? money(decision.take_profit_price)
+                : "—";
+
+        const riskAmt = decision.risk_amount;
+        const rewardAmt = decision.reward_amount;
+
+        document.getElementById("decision-risk-reward").textContent =
+            (riskAmt !== undefined && riskAmt !== null && rewardAmt !== undefined && rewardAmt !== null)
+                ? `${money(riskAmt)} / ${money(rewardAmt)}`
+                : "—";
+
         document.getElementById("technical-reason").textContent =
             "Technical Score: " +
             (decision.technical_score !== undefined
