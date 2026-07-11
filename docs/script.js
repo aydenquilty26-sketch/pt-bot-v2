@@ -150,6 +150,12 @@ async function loadDashboard() {
                 ? percent(decision.fundamental_score * 100)
                 : "—");
 
+        document.getElementById("news-reason").textContent =
+            "News Score: " +
+            (decision.news_score !== undefined && decision.news_score !== null
+                ? percent(decision.news_score * 100)
+                : "—");
+
         document.getElementById("risk-reason").textContent =
             (decision.risk_decision || "Unknown").toUpperCase() +
             " - " +
@@ -267,7 +273,12 @@ async function loadDashboard() {
         if (history.length) {
 
             const labels = history.map(p =>
-                new Date(p.timestamp).toLocaleDateString()
+                new Date(p.timestamp).toLocaleString(undefined, {
+                    month: "short",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "2-digit"
+                })
             );
 
             const values = history.map(p =>
@@ -292,15 +303,41 @@ async function loadDashboard() {
                             backgroundColor: "rgba(59,130,246,.15)",
                             fill: true,
                             pointRadius: 2,
+                            pointHoverRadius: 5,
                             tension: .25
                         }]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
+                        interaction: {
+                            mode: "index",
+                            intersect: false
+                        },
+                        scales: {
+                            x: {
+                                ticks: {
+                                    // Full history can be hundreds of points -
+                                    // let Chart.js thin the labels instead of
+                                    // cramming every timestamp onto the axis.
+                                    autoSkip: true,
+                                    maxRotation: 45,
+                                    minRotation: 0
+                                }
+                            }
+                        },
                         plugins: {
                             legend: {
                                 display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    title: (items) => {
+                                        const point = history[items[0].dataIndex];
+                                        return new Date(point.timestamp).toLocaleString();
+                                    },
+                                    label: (item) => money(item.parsed.y)
+                                }
                             }
                         }
                     }
