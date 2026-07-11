@@ -124,6 +124,193 @@ def _compute_sharpe_ratio(equity_history: list):
     return round(sharpe, 2)
 
 
+def _compute_extended_trade_stats(trade_rows: list) -> dict:
+    """Hold time and best/worst trade, computed over full trade history -
+    not the same list as _compute_trade_stats' pnls, but derived from the
+    same underlying rows so they always agree with each other."""
+
+    if not trade_rows:
+        return {
+            "avg_hold_hours": None,
+            "largest_win": None,
+            "largest_loss": None,
+        }
+
+    hold_times = [
+        r["hold_time_hours"]
+        for r in trade_rows
+        if r["hold_time_hours"] is not None
+    ]
+
+    pnls = [r["pnl"] for r in trade_rows]
+    wins = [p for p in pnls if p > 0]
+    losses = [p for p in pnls if p < 0]
+
+    return {
+        "avg_hold_hours": round(sum(hold_times) / len(hold_times), 1) if hold_times else None,
+        "largest_win": round(max(wins), 2) if wins else None,
+        "largest_loss": round(min(losses), 2) if losses else None,
+    }
+
+
+def _compute_rejection_reasons(conn) -> list:
+    """Why has the risk gate said no, and how often. Answers 'what mistakes
+    is the AI trying to make that risk management is catching.'"""
+
+    rows = conn.execute("""
+        SELECT risk_reason, COUNT(*) as cnt
+        FROM cycles
+        WHERE risk_decision = 'rejected'
+        GROUP BY risk_reason
+        ORDER BY cnt DESC
+        LIMIT 8
+    """).fetchall()
+
+    return [{"reason": r["risk_reason"], "count": r["cnt"]} for r in rows]
+
+
+def _compute_confidence_distribution(conn) -> dict:
+    """Buckets every proposed trade (not just executed ones) by how
+    confident the composite score was. Since TRADE_SCORE_THRESHOLD gates
+    proposals at 0.40, the buckets split the 0.40-1.0 range into thirds
+    rather than starting from zero."""
+
+    rows = conn.execute("""
+        SELECT composite_score
+        FROM cycles
+        WHERE composite_score IS NOT NULL
+    """).fetchall()
+
+    low = medium = high = 0
+
+    for r in rows:
+        score = abs(r["composite_score"])
+        if score < 0.55:
+            low += 1
+        elif score < 0.70:
+            medium += 1
+        else:
+            high += 1
+
+    return {"low": low, "medium": medium, "high": high}
+
+
+def _get_watchlist_snapshot(conn) -> list:
+    """The latest reading on every ticker currently being watched, not
+    just the one that most recently triggered a trade - answers 'what is
+    the bot seeing across the whole list right now.'"""
+
+    rows = conn.execute("""
+        SELECT c.ticker, c.technical_score, c.fundamental_score,
+               c.news_score, c.composite_score, c.action, c.timestamp
+        FROM cycles c
+        INNER JOIN (
+            SELECT ticker, MAX(id) as max_id
+            FROM cycles
+            GROUP BY ticker
+        ) latest ON c.ticker = latest.ticker AND c.id = latest.max_id
+    """).fetchall()
+
+    by_ticker = {r["ticker"]: dict(r) for r in rows}
+
+    # Ordered to match the configured watchlist, and limited to tickers
+    # still actually on it - old rows from a ticker that's since been
+    # removed shouldn't linger in this view.
+    return [
+        by_ticker[t]
+        for t in config.WATCHLIST
+        if t in by_ticker
+    ]
+
+
+def _get_market_context(equity_history: list) -> dict:
+    """SPY trend (bullish/bearish/neutral, same logic as the technical
+    agent uses per-stock) and how the account's return compares to just
+    holding SPY over the same window. One extra data fetch per run - not
+    per ticker, so it doesn't meaningfully add to API usage."""
+
+    try:
+        import yfinance as yf
+
+        hist = yf.Ticker("SPY").history(period="6mo", interval="1d")
+
+        if hist.empty or len(hist) < 50:
+            return {"trend": None, "spy_return_pct": None}
+
+        close = hist["Close"]
+        sma20 = close.rolling(20).mean().iloc[-1]
+        sma50 = close.rolling(50).mean().iloc[-1]
+
+        if abs(sma20 - sma50) / sma50 < 0.003:
+            trend = "neutral"
+        else:
+            trend = "bullish" if sma20 > sma50 else "bearish"
+
+        spy_return_pct = None
+
+        if equity_history:
+            start_date = equity_history[0]["timestamp"][:10]
+            close_dates = close.index.strftime("%Y-%m-%d")
+            matching = close[close_dates >= start_date]
+
+            if len(matching) >= 1:
+                first_price = float(matching.iloc[0])
+                last_price = float(close.iloc[-1])
+                spy_return_pct = round(
+                    ((last_price - first_price) / first_price) * 100, 2
+                )
+
+        return {"trend": trend, "spy_return_pct": spy_return_pct}
+
+    except Exception:
+        return {"trend": None, "spy_return_pct": None}
+
+
+def _get_sector_allocation(positions_detail: list) -> list:
+    """Groups open positions by sector using yfinance's company profile
+    data. Only looked up for currently-held tickers, not the whole
+    watchlist - keeps this to a handful of calls even as the watchlist
+    grows, since it only runs against what's actually in the portfolio."""
+
+    if not positions_detail:
+        return []
+
+    try:
+        import yfinance as yf
+    except Exception:
+        return []
+
+    total_value = sum(p["market_value"] for p in positions_detail)
+
+    if total_value <= 0:
+        return []
+
+    sector_totals = {}
+
+    for p in positions_detail:
+        sector = "Unknown"
+        try:
+            info = yf.Ticker(p["ticker"]).info
+            sector = info.get("sector") or "Unknown"
+        except Exception:
+            pass
+
+        sector_totals[sector] = sector_totals.get(sector, 0) + p["market_value"]
+
+    allocation = [
+        {
+            "sector": sector,
+            "market_value": round(value, 2),
+            "pct": round((value / total_value) * 100, 1),
+        }
+        for sector, value in sector_totals.items()
+    ]
+
+    allocation.sort(key=lambda x: x["pct"], reverse=True)
+
+    return allocation
+
+
 def _build_plain_summary(
     positions_detail: list,
     daily_pl,
@@ -205,9 +392,16 @@ def export():
         broker = None
         open_positions = 0
 
+    sector_allocation = _get_sector_allocation(positions_detail)
+
     if not os.path.exists(config.DB_PATH):
 
         empty_stats = _compute_trade_stats([])
+        empty_stats.update({
+            "avg_hold_hours": None,
+            "largest_win": None,
+            "largest_loss": None,
+        })
 
         data = {
             "mode": config.MODE,
@@ -219,6 +413,13 @@ def export():
             "positions": positions_detail,
             "daily_pl": 0,
             "trade_stats": empty_stats,
+            "rejection_reasons": [],
+            "confidence_distribution": {"low": 0, "medium": 0, "high": 0},
+            "watchlist_snapshot": [],
+            "market_context": {"trend": None, "spy_return_pct": None},
+            "sector_allocation": sector_allocation,
+            "cash_deployed_pct": None,
+            "risk_reward_ratio": round(config.TAKE_PROFIT_PCT / config.STOP_LOSS_PCT, 2),
             "plain_summary": _build_plain_summary(
                 positions_detail, 0, empty_stats, [], len(config.WATCHLIST), False
             ),
@@ -277,11 +478,16 @@ def export():
             LIMIT 100
         """).fetchall()
 
-        # Full history (not just the last 100) so profit factor / win rate
-        # reflect everything the bot has ever done, not a recent window.
-        all_pnl_rows = conn.execute("""
-            SELECT pnl FROM completed_trades
+        # Full history (not just the last 100) so profit factor / win rate /
+        # hold time / largest win-loss reflect everything the bot has ever
+        # done, not a recent window.
+        all_trades_full = conn.execute("""
+            SELECT pnl, hold_time_hours FROM completed_trades
         """).fetchall()
+
+        rejection_reasons = _compute_rejection_reasons(conn)
+        confidence_distribution = _compute_confidence_distribution(conn)
+        watchlist_snapshot = _get_watchlist_snapshot(conn)
 
         conn.close()
 
@@ -289,7 +495,7 @@ def export():
         recent_cycles = [dict(r) for r in cycle_rows]
         recent_halts = [dict(r) for r in halt_rows]
         recent_trades = [dict(r) for r in trade_rows]
-        all_pnls = [r["pnl"] for r in all_pnl_rows]
+        all_pnls = [r["pnl"] for r in all_trades_full]
 
         starting_equity = 100000.0
 
@@ -357,9 +563,19 @@ def export():
         trade_stats = _compute_trade_stats(all_pnls)
         max_drawdown_pct = _compute_max_drawdown_pct(equity_history)
         sharpe_ratio = _compute_sharpe_ratio(equity_history)
+        extended_stats = _compute_extended_trade_stats(all_trades_full)
 
         trade_stats["max_drawdown_pct"] = max_drawdown_pct
         trade_stats["sharpe_ratio"] = sharpe_ratio
+        trade_stats.update(extended_stats)
+
+        market_context = _get_market_context(equity_history)
+
+        cash_deployed_pct = (
+            round((positions_value / current_equity) * 100, 1)
+            if current_equity and current_equity > 0
+            else None
+        )
 
         plain_summary = _build_plain_summary(
             positions_detail,
@@ -398,6 +614,14 @@ def export():
             "current_decision": current_decision,
 
             "trade_stats": trade_stats,
+
+            "rejection_reasons": rejection_reasons,
+            "confidence_distribution": confidence_distribution,
+            "watchlist_snapshot": watchlist_snapshot,
+            "market_context": market_context,
+            "sector_allocation": sector_allocation,
+            "cash_deployed_pct": cash_deployed_pct,
+            "risk_reward_ratio": round(config.TAKE_PROFIT_PCT / config.STOP_LOSS_PCT, 2),
 
             "plain_summary": plain_summary,
 
