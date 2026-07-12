@@ -1,7 +1,9 @@
 """
 Technical signal agent.
-Input: a ticker's recent daily price history (fetched via yfinance - free,
-no API key needed, used only for market data, never for trading).
+Input: a ticker's recent daily price history - live via yfinance by
+default, or a pre-fetched historical DataFrame (used by the backtest
+engine so it can replay this exact same math against past dates without
+duplicating the scoring logic).
 Output: score from -1 (strong sell) to +1 (strong buy) + confidence.
 """
 import yfinance as yf
@@ -28,18 +30,14 @@ def _macd(close, fast=12, slow=26, signal=9):
     return macd_line, signal_line
 
 
-def get_technical_signal(ticker: str) -> dict:
-    try:
-        hist = yf.Ticker(ticker).history(period="6mo", interval="1d")
-    except Exception as e:
-        return {"agent": "technical", "ticker": ticker, "score": 0.0,
-                "confidence": 0.0, "rationale": f"data fetch failed: {e}"}
+def _score_from_close_series(ticker: str, close: pd.Series) -> dict:
+    """The actual scoring logic, as a pure function of a price series.
+    Both the live path and the backtest engine call this exact function -
+    the only thing that differs is where `close` came from."""
 
-    if hist.empty or len(hist) < 50:
+    if close is None or len(close) < 50:
         return {"agent": "technical", "ticker": ticker, "score": 0.0,
                 "confidence": 0.0, "rationale": "insufficient price history"}
-
-    close = hist["Close"]
 
     rsi = _rsi(close).iloc[-1]
     macd_line, signal_line = _macd(close)
@@ -93,3 +91,23 @@ def get_technical_signal(ticker: str) -> dict:
         "rationale": ", ".join(reasons) if reasons else "neutral",
         "last_price": float(close.iloc[-1]),
     }
+
+
+def get_technical_signal(ticker: str, hist: pd.DataFrame = None) -> dict:
+    """hist is optional - pass a pre-fetched DataFrame (e.g. a historical
+    slice up to some past date, from the backtest engine) to skip the live
+    yfinance call and score against that instead. Live trading calls this
+    with hist=None, same as before."""
+
+    if hist is None:
+        try:
+            hist = yf.Ticker(ticker).history(period="6mo", interval="1d")
+        except Exception as e:
+            return {"agent": "technical", "ticker": ticker, "score": 0.0,
+                    "confidence": 0.0, "rationale": f"data fetch failed: {e}"}
+
+    if hist.empty:
+        return {"agent": "technical", "ticker": ticker, "score": 0.0,
+                "confidence": 0.0, "rationale": "insufficient price history"}
+
+    return _score_from_close_series(ticker, hist["Close"])

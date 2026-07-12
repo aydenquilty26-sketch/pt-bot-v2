@@ -43,3 +43,37 @@ HALT_FILE = "HALT"
 
 # Tracks portfolio peak equity for the drawdown circuit breaker.
 PEAK_EQUITY_FILE = f"{MODE}_peak_equity.txt"
+
+# --------------------
+# Backtesting only - none of this affects live/paper trading
+# --------------------
+
+# Larger, sector-diversified list used only for backtest sample size -
+# separate from the live WATCHLIST above on purpose. All large-cap,
+# liquid names with long clean price history.
+BACKTEST_WATCHLIST = [
+    # Technology
+    "AAPL", "MSFT", "NVDA", "AVGO", "CRM",
+    # Communication Services
+    "GOOGL", "META", "NFLX", "DIS",
+    # Consumer Discretionary
+    "AMZN", "TSLA", "HD", "NKE",
+    # Consumer Staples
+    "PG", "KO", "WMT", "COST",
+    # Financials
+    "JPM", "BAC", "GS", "V",
+    # Healthcare
+    "UNH", "JNJ", "PFE", "ABBV",
+    # Industrials
+    "BA", "CAT", "HON", "UPS",
+    # Energy
+    "XOM", "CVX",
+    # Utilities
+    "NEE", "DUK",
+    # Materials
+    "LIN", "FCX",
+]
+
+BACKTEST_YEARS = int(os.getenv("BACKTEST_YEARS", "5"))
+WALK_FORWARD_TRAIN_MONTHS = int(os.getenv("WALK_FORWARD_TRAIN_MONTHS", "12"))
+WALK_FORWARD_TEST_MONTHS = int(os.getenv("WALK_FORWARD_TEST_MONTHS", "3"))

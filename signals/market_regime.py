@@ -22,19 +22,27 @@ What it produces feeds two places downstream:
 A data hiccup here should never block trading entirely - on any failure
 this falls back to "no adjustment" (multiplier 1.0, threshold +0) rather
 than halting the cycle.
+
+spy_hist/vix_hist are optional - pass pre-fetched historical DataFrames
+(from the backtest engine, sliced up to a past date) to score against
+those instead of live-fetching. Live trading calls this with both None,
+same behavior as before.
 """
 
 MIN_MULTIPLIER = 0.25
 MAX_MULTIPLIER = 1.25
 
 
-def get_market_regime() -> dict:
+def get_market_regime(spy_hist=None, vix_hist=None) -> dict:
 
     try:
-        import yfinance as yf
+        if spy_hist is None or vix_hist is None:
+            import yfinance as yf
 
-        spy_hist = yf.Ticker("SPY").history(period="6mo", interval="1d")
-        vix_hist = yf.Ticker("^VIX").history(period="5d", interval="1d")
+            if spy_hist is None:
+                spy_hist = yf.Ticker("SPY").history(period="6mo", interval="1d")
+            if vix_hist is None:
+                vix_hist = yf.Ticker("^VIX").history(period="5d", interval="1d")
 
         trend = None
 
