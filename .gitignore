@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+
+# Backtest data cache and sweep outputs - regenerated locally, not
+# something that needs to live in version control (and the cache in
+# particular can get large fast across a 35-ticker, 5-year sweep).
+backtest/cache/
+backtest/results/
