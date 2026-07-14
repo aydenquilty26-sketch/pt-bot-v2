@@ -306,9 +306,151 @@
       "equity": 100051.12,
       "cash": 90579.84,
       "positions_value": 9471.275
+    },
+    {
+      "timestamp": "2026-07-14T16:55:44.669741+00:00",
+      "equity": 100059.71,
+      "cash": 90579.84,
+      "positions_value": 9479.869999999999
     }
   ],
   "recent_cycles": [
+    {
+      "timestamp": "2026-07-14T16:55:49.413712+00:00",
+      "ticker": "JPM",
+      "technical_score": 0.1,
+      "fundamental_score": 0.8,
+      "news_score": 0.0,
+      "composite_score": null,
+      "action": "none",
+      "risk_decision": "n/a",
+      "risk_reason": "no trade proposed",
+      "order_id": null,
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
+    },
+    {
+      "timestamp": "2026-07-14T16:55:48.755874+00:00",
+      "ticker": "META",
+      "technical_score": -0.45,
+      "fundamental_score": 0.9,
+      "news_score": 0.0,
+      "composite_score": null,
+      "action": "none",
+      "risk_decision": "n/a",
+      "risk_reason": "no trade proposed",
+      "order_id": null,
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
+    },
+    {
+      "timestamp": "2026-07-14T16:55:48.381639+00:00",
+      "ticker": "TSLA",
+      "technical_score": -0.65,
+      "fundamental_score": 0.2,
+      "news_score": 0.0,
+      "composite_score": null,
+      "action": "none",
+      "risk_decision": "n/a",
+      "risk_reason": "no trade proposed",
+      "order_id": null,
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
+    },
+    {
+      "timestamp": "2026-07-14T16:55:47.868368+00:00",
+      "ticker": "NVDA",
+      "technical_score": -0.1,
+      "fundamental_score": 0.9,
+      "news_score": 0.0,
+      "composite_score": null,
+      "action": "none",
+      "risk_decision": "n/a",
+      "risk_reason": "no trade proposed",
+      "order_id": null,
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
+    },
+    {
+      "timestamp": "2026-07-14T16:55:47.001261+00:00",
+      "ticker": "AMZN",
+      "technical_score": -0.1,
+      "fundamental_score": 0.6,
+      "news_score": 0.0,
+      "composite_score": null,
+      "action": "none",
+      "risk_decision": "n/a",
+      "risk_reason": "no trade proposed",
+      "order_id": null,
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
+    },
+    {
+      "timestamp": "2026-07-14T16:55:46.430263+00:00",
+      "ticker": "GOOGL",
+      "technical_score": -0.1,
+      "fundamental_score": 0.9,
+      "news_score": 0.0,
+      "composite_score": null,
+      "action": "none",
+      "risk_decision": "n/a",
+      "risk_reason": "no trade proposed",
+      "order_id": null,
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
+    },
+    {
+      "timestamp": "2026-07-14T16:55:45.974101+00:00",
+      "ticker": "MSFT",
+      "technical_score": -0.1,
+      "fundamental_score": 0.9,
+      "news_score": 0.0,
+      "composite_score": null,
+      "action": "none",
+      "risk_decision": "n/a",
+      "risk_reason": "no trade proposed",
+      "order_id": null,
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
+    },
+    {
+      "timestamp": "2026-07-14T16:55:45.595053+00:00",
+      "ticker": "AAPL",
+      "technical_score": 0.4,
+      "fundamental_score": 0.8,
+      "news_score": 0.0,
+      "composite_score": null,
+      "action": "none",
+      "risk_decision": "n/a",
+      "risk_reason": "no trade proposed",
+      "order_id": null,
+      "notes": "",
+      "stop_price": null,
+      "take_profit_price": null,
+      "risk_amount": null,
+      "reward_amount": null
+    },
     {
       "timestamp": "2026-07-14T16:35:34.146841+00:00",
       "ticker": "JPM",
@@ -3572,175 +3714,39 @@
       "take_profit_price": null,
       "risk_amount": null,
       "reward_amount": null
-    },
-    {
-      "timestamp": "2026-07-10T21:08:12.501501+00:00",
-      "ticker": "JPM",
-      "technical_score": 0.1,
-      "fundamental_score": 0.8,
-      "news_score": null,
-      "composite_score": null,
-      "action": "none",
-      "risk_decision": "n/a",
-      "risk_reason": "no trade proposed",
-      "order_id": null,
-      "notes": "",
-      "stop_price": null,
-      "take_profit_price": null,
-      "risk_amount": null,
-      "reward_amount": null
-    },
-    {
-      "timestamp": "2026-07-10T21:08:11.855659+00:00",
-      "ticker": "META",
-      "technical_score": -0.1,
-      "fundamental_score": 0.9,
-      "news_score": null,
-      "composite_score": null,
-      "action": "none",
-      "risk_decision": "n/a",
-      "risk_reason": "no trade proposed",
-      "order_id": null,
-      "notes": "",
-      "stop_price": null,
-      "take_profit_price": null,
-      "risk_amount": null,
-      "reward_amount": null
-    },
-    {
-      "timestamp": "2026-07-10T21:08:11.315505+00:00",
-      "ticker": "TSLA",
-      "technical_score": -0.1,
-      "fundamental_score": 0.2,
-      "news_score": null,
-      "composite_score": null,
-      "action": "none",
-      "risk_decision": "n/a",
-      "risk_reason": "no trade proposed",
-      "order_id": null,
-      "notes": "",
-      "stop_price": null,
-      "take_profit_price": null,
-      "risk_amount": null,
-      "reward_amount": null
-    },
-    {
-      "timestamp": "2026-07-10T21:08:10.788269+00:00",
-      "ticker": "NVDA",
-      "technical_score": -0.1,
-      "fundamental_score": 0.9,
-      "news_score": null,
-      "composite_score": null,
-      "action": "none",
-      "risk_decision": "n/a",
-      "risk_reason": "no trade proposed",
-      "order_id": null,
-      "notes": "",
-      "stop_price": null,
-      "take_profit_price": null,
-      "risk_amount": null,
-      "reward_amount": null
-    },
-    {
-      "timestamp": "2026-07-10T21:08:10.205126+00:00",
-      "ticker": "AMZN",
-      "technical_score": -0.1,
-      "fundamental_score": 0.6,
-      "news_score": null,
-      "composite_score": null,
-      "action": "none",
-      "risk_decision": "n/a",
-      "risk_reason": "no trade proposed",
-      "order_id": null,
-      "notes": "",
-      "stop_price": null,
-      "take_profit_price": null,
-      "risk_amount": null,
-      "reward_amount": null
-    },
-    {
-      "timestamp": "2026-07-10T21:08:09.710320+00:00",
-      "ticker": "GOOGL",
-      "technical_score": -0.1,
-      "fundamental_score": 0.9,
-      "news_score": null,
-      "composite_score": null,
-      "action": "none",
-      "risk_decision": "n/a",
-      "risk_reason": "no trade proposed",
-      "order_id": null,
-      "notes": "",
-      "stop_price": null,
-      "take_profit_price": null,
-      "risk_amount": null,
-      "reward_amount": null
-    },
-    {
-      "timestamp": "2026-07-10T21:08:09.132606+00:00",
-      "ticker": "MSFT",
-      "technical_score": -0.1,
-      "fundamental_score": 0.9,
-      "news_score": null,
-      "composite_score": null,
-      "action": "none",
-      "risk_decision": "n/a",
-      "risk_reason": "no trade proposed",
-      "order_id": null,
-      "notes": "",
-      "stop_price": null,
-      "take_profit_price": null,
-      "risk_amount": null,
-      "reward_amount": null
-    },
-    {
-      "timestamp": "2026-07-10T21:08:08.554810+00:00",
-      "ticker": "AAPL",
-      "technical_score": 0.4,
-      "fundamental_score": 0.8,
-      "news_score": null,
-      "composite_score": null,
-      "action": "none",
-      "risk_decision": "n/a",
-      "risk_reason": "no trade proposed",
-      "order_id": null,
-      "notes": "",
-      "stop_price": null,
-      "take_profit_price": null,
-      "risk_amount": null,
-      "reward_amount": null
     }
   ],
   "recent_trades": [],
   "halted": false,
   "recent_halts": [],
   "starting_equity": 100000.0,
-  "current_equity": 100052.07,
-  "portfolio_value": 100052.07,
-  "total_pnl": 52.070000000006985,
-  "total_pnl_pct": 0.052070000000006986,
+  "current_equity": 100058.64,
+  "portfolio_value": 100058.64,
+  "total_pnl": 58.63999999999942,
+  "total_pnl_pct": 0.05863999999999942,
   "cash": 90579.84,
-  "positions_value": 9472.23000000001,
-  "buying_power": 388841.59,
-  "daily_pl": 29.160000000003492,
+  "positions_value": 9478.800000000003,
+  "buying_power": 388859.99,
+  "daily_pl": 35.729999999995925,
   "open_positions": 2,
   "positions": [
     {
       "ticker": "AAPL",
       "qty": 15.0,
       "avg_entry_price": 313.55,
-      "current_price": 313.355,
-      "market_value": 4700.325,
-      "unrealized_pl": -2.925,
-      "unrealized_plpc": -0.062
+      "current_price": 313.905,
+      "market_value": 4708.575,
+      "unrealized_pl": 5.325,
+      "unrealized_plpc": 0.11299999999999999
     },
     {
       "ticker": "JPM",
       "qty": 14.0,
       "avg_entry_price": 336.921429,
-      "current_price": 340.85,
-      "market_value": 4771.9,
-      "unrealized_pl": 54.999994,
-      "unrealized_plpc": 1.166
+      "current_price": 340.73,
+      "market_value": 4770.22,
+      "unrealized_pl": 53.319994,
+      "unrealized_plpc": 1.13
     }
   ],
   "current_decision": null,
@@ -3755,7 +3761,7 @@
     "average_trade": null,
     "expectancy": null,
     "max_drawdown_pct": 0.07,
-    "sharpe_ratio": 18.21,
+    "sharpe_ratio": 15.66,
     "avg_hold_hours": null,
     "largest_win": null,
     "largest_loss": null
@@ -3779,7 +3785,7 @@
       "news_score": 0.0,
       "composite_score": null,
       "action": "none",
-      "timestamp": "2026-07-14T16:35:30.880725+00:00"
+      "timestamp": "2026-07-14T16:55:45.595053+00:00"
     },
     {
       "ticker": "MSFT",
@@ -3788,7 +3794,7 @@
       "news_score": 0.0,
       "composite_score": null,
       "action": "none",
-      "timestamp": "2026-07-14T16:35:31.313361+00:00"
+      "timestamp": "2026-07-14T16:55:45.974101+00:00"
     },
     {
       "ticker": "GOOGL",
@@ -3797,7 +3803,7 @@
       "news_score": 0.0,
       "composite_score": null,
       "action": "none",
-      "timestamp": "2026-07-14T16:35:31.706050+00:00"
+      "timestamp": "2026-07-14T16:55:46.430263+00:00"
     },
     {
       "ticker": "AMZN",
@@ -3806,7 +3812,7 @@
       "news_score": 0.0,
       "composite_score": null,
       "action": "none",
-      "timestamp": "2026-07-14T16:35:32.310547+00:00"
+      "timestamp": "2026-07-14T16:55:47.001261+00:00"
     },
     {
       "ticker": "NVDA",
@@ -3815,16 +3821,16 @@
       "news_score": 0.0,
       "composite_score": null,
       "action": "none",
-      "timestamp": "2026-07-14T16:35:32.845824+00:00"
+      "timestamp": "2026-07-14T16:55:47.868368+00:00"
     },
     {
       "ticker": "TSLA",
-      "technical_score": -0.1,
+      "technical_score": -0.65,
       "fundamental_score": 0.2,
       "news_score": 0.0,
       "composite_score": null,
       "action": "none",
-      "timestamp": "2026-07-14T16:35:33.207186+00:00"
+      "timestamp": "2026-07-14T16:55:48.381639+00:00"
     },
     {
       "ticker": "META",
@@ -3833,7 +3839,7 @@
       "news_score": 0.0,
       "composite_score": null,
       "action": "none",
-      "timestamp": "2026-07-14T16:35:33.713654+00:00"
+      "timestamp": "2026-07-14T16:55:48.755874+00:00"
     },
     {
       "ticker": "JPM",
@@ -3842,17 +3848,17 @@
       "news_score": 0.0,
       "composite_score": null,
       "action": "none",
-      "timestamp": "2026-07-14T16:35:34.146841+00:00"
+      "timestamp": "2026-07-14T16:55:49.413712+00:00"
     }
   ],
   "market_context": {
     "trend": "bullish",
-    "spy_return_pct": -0.5
+    "spy_return_pct": -0.44
   },
   "active_regime": {
-    "timestamp": "2026-07-14T16:35:30.342336+00:00",
+    "timestamp": "2026-07-14T16:55:45.153584+00:00",
     "trend": "bullish",
-    "vix": 16.69,
+    "vix": 16.56,
     "vix_tier": "normal",
     "risk_multiplier": 1.0,
     "threshold_adjustment": 0.0,
@@ -3861,22 +3867,22 @@
   "sector_allocation": [
     {
       "sector": "Financial Services",
-      "market_value": 4771.9,
-      "pct": 50.4
+      "market_value": 4770.22,
+      "pct": 50.3
     },
     {
       "sector": "Technology",
-      "market_value": 4700.32,
-      "pct": 49.6
+      "market_value": 4708.57,
+      "pct": 49.7
     }
   ],
   "cash_deployed_pct": 9.5,
   "risk_reward_ratio": 2.0,
   "plain_summary": [
     "Currently holding 2 positions: AAPL, JPM.",
-    "The account is up $29.16 today.",
+    "The account is up $35.73 today.",
     "In its most recent check, the bot reviewed 8 stocks and found 0 worth acting on - the rest didn't meet its confidence bar, which is normal.",
     "No trades have closed yet, so win rate and profit factor aren't meaningful yet."
   ],
-  "last_updated": "2026-07-14T16:35:29.562014+00:00"
+  "last_updated": "2026-07-14T16:55:44.669741+00:00"
 }
