@@ -32,7 +32,7 @@ MAX_TOTAL_EXPOSURE_PCT = float(os.getenv("MAX_TOTAL_EXPOSURE_PCT", "0.80"))
 STOP_LOSS_PCT = float(os.getenv("STOP_LOSS_PCT", "0.03"))
 TAKE_PROFIT_PCT = float(os.getenv("TAKE_PROFIT_PCT", "0.06"))
 DRAWDOWN_HALT_PCT = float(os.getenv("DRAWDOWN_HALT_PCT", "0.08"))
-TRADE_SCORE_THRESHOLD = float(os.getenv("TRADE_SCORE_THRESHOLD", "0.40"))
+TRADE_SCORE_THRESHOLD = float(os.getenv("TRADE_SCORE_THRESHOLD", "0.25"))
 
 # Separate database file per mode so paper and live results are never mixed,
 # even though it's the same code running both.
